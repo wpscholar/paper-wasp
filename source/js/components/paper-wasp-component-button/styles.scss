@@ -1,0 +1,36 @@
+.paper-wasp-button {
+
+  background-color: $button-primary;
+  border-radius: 5px;
+  color: #ffffff;
+  display: inline-block;
+  text-decoration: none;
+
+  &:hover {
+    color: #ffffff;
+  }
+
+  // Default button size is medium
+  font-size: 1em;
+  padding: 0.5em 1em;
+
+  &--small {
+    font-size: .75em;
+    padding: .25em 0.75em;
+  }
+
+  &--medium {
+    // This is the default
+  }
+
+  &--large {
+    padding: .75em 1.25em;
+    font-size: 1.25em;
+  }
+
+  &--extra-large {
+    padding: 1.25em 1.5em;
+    font-size: 1.5em;
+  }
+
+}

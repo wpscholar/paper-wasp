@@ -1,0 +1,66 @@
+.paper-wasp-component {
+
+  border: 1px dashed transparent;
+  position: relative;
+  min-height: 30px;
+
+  &__title {
+    display: none;
+    cursor: default;
+    font-size: 16px;
+    line-height: 100%;
+    padding: .25em .5em;
+    position: absolute;
+    left: -1px;
+    bottom: 100%;
+    text-transform: capitalize;
+    font-weight: lighter;
+    border-radius: 6px 6px 0 0;
+    border: 1px solid grey;
+    border-bottom: 1px dashed $component-highlight;
+    span {
+      margin-right: .5em;
+    }
+  }
+
+  &__title, &__action {
+    background-color: $black;
+    color: white;
+  }
+
+  &__children {
+    a, button {
+      pointer-events: none;
+    }
+  }
+
+  // State: Hover
+  &:hover {
+    border-color: $component-highlight;
+    .paper-wasp-component__title {
+      display: block;
+    }
+    .paper-wasp-component__actions {
+      display: block;
+    }
+  }
+
+  // State: Empty
+  &--empty {
+
+    .paper-wasp-component__children div {
+      border: 1px dashed black;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 50px;
+      position: relative;
+      text-align: center;
+      &:hover {
+        border: none;
+      }
+    }
+
+  }
+
+}

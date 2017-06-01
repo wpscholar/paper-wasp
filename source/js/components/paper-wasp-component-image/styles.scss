@@ -1,0 +1,24 @@
+.paper-wasp-image {
+
+  margin: 0;
+  padding: 0;
+
+  &--center {
+    text-align: center;
+  }
+
+  &--right {
+    text-align: right;
+  }
+
+  &--cover {
+    img {
+      width: 100%;
+    }
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+}

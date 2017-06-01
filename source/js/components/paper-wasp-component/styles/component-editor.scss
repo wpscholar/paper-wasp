@@ -1,0 +1,37 @@
+.paper-wasp-component-editor {
+
+  position: relative;
+
+  &__menu {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  &__menu_option {
+    background: none;
+    color: #66757F;
+    display: inline-block;
+    font-size: 20px;
+    margin: 0 0 0 .25em;
+    padding: .25em .5em;
+    &:hover, &:focus {
+      background: #dedede;
+    }
+    &--active {
+      background: #ebebeb;
+    }
+  }
+
+  &__actions {
+    margin: 2em 0;
+    display: flex;
+    justify-content: space-between;
+    align-content: flex-start;
+  }
+
+  &__action-delete {
+    margin-top: 2em;
+  }
+
+}

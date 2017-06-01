@@ -1,0 +1,28 @@
+.paper-wasp-component-selector {
+
+  &__selector {
+    display: flex;
+    justify-content: space-between;
+    label {
+      flex-basis: 75%;
+    }
+    button {
+      flex-basis: 20%;
+      margin: 1em 0;
+    }
+  }
+
+  &__preview {
+    text-align: center;
+    height: 300px;
+    padding-top: 1em;
+    margin-top: 1em;
+    border-top: 1px dashed #cccccc;
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+  }
+
+}

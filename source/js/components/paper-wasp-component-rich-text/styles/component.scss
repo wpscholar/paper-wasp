@@ -1,0 +1,7 @@
+.paper-wasp-rich-text {
+    &:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}

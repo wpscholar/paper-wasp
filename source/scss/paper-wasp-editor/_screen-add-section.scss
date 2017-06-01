@@ -1,0 +1,56 @@
+.paper-wasp-editor__screen_add_section {
+
+  button {
+    color: black;
+    display: inline-block;
+    background: none;
+    margin: 0;
+    padding: 10px;
+    font-weight: normal;
+    text-transform: none;
+  }
+
+}
+
+.paper-wasp-editor {
+
+  &__section-list {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  &__section {
+    flex-basis: 33.33%;
+    flex-grow: 1;
+    &:hover {
+      .paper-wasp-editor__section-column {
+        border-color: $text-primary;
+      }
+      .paper-wasp-editor__section-title {
+        color: $text-primary;
+      }
+    }
+  }
+
+  &__section-title {
+    display: inline-block;
+    margin-top: .5em;
+  }
+
+  &__section-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  &__section-column {
+    flex-grow: 1;
+    flex-shrink: 1;
+    height: 30px;
+    border: 1px solid #ccc;
+  }
+
+}

@@ -1,0 +1,11 @@
+[ignore]
+
+[include]
+
+[libs]
+
+[options]
+module.name_mapper='^\(.*\)$' -> '<PROJECT_ROOT>/source/js/components/\1'
+module.name_mapper='^\(.*\)$' -> '<PROJECT_ROOT>/source/js/modules/\1'
+module.name_mapper.extension='css' -> 'empty/object'
+module.name_mapper.extension='scss' -> 'empty/object'

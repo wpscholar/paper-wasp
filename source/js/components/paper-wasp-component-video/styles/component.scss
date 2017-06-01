@@ -1,0 +1,45 @@
+.paper-wasp-video {
+
+  &--responsive {
+    .wp-video, .wp-video-shortcode {
+      width: 100% !important;
+    }
+
+    .mejs-video, iframe {
+      max-width: 100%;
+    }
+
+    > div {
+      position: relative;
+      padding-bottom: 56.25%; // 16:9 aspect ratio
+      height: 0;
+      iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+  }
+
+  &--center {
+    .wp-video, iframe {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  &--right {
+    > div {
+      text-align: right;
+    }
+    .wp-video {
+      display: block;
+      margin-left: auto;
+    }
+  }
+
+}

@@ -1,0 +1,20 @@
+.paper-wasp-component-editor {
+  .mce-tinymce {
+    button:hover {
+      background-color: inherit;
+    }
+  }
+}
+
+.tiny-image-editor {
+    div > div > button {
+        background-color: #ADD8E6;
+        padding: 5px;
+        margin-left: 20px;
+        margin-top: 5px;
+    }
+
+    &+div {
+        margin-top: 10px;
+    }
+}

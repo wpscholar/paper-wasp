@@ -1,0 +1,63 @@
+.paper-wasp-editor {
+
+  .paper-wasp-row-wrap {
+
+    position: relative;
+
+    &:before, &:after {
+      content: '';
+      position: absolute;
+      width: 30px;
+      height: 0;
+      border: 3px solid transparent;
+    }
+
+    &:before {
+      bottom: 50%;
+      left: -30px;
+    }
+
+    &:after {
+      top: 50%;
+      left: -30px;
+    }
+
+    .paper-wasp-row__action-menu {
+      display: none;
+      background: $black;
+      color: white;
+      position: absolute;
+      top: 50%;
+      left: -13px;
+      width: 30px;
+      height: 30px;
+      font-size: 15px;
+      line-height: 29px;
+      margin: 0;
+      padding: 0;
+      border-radius: 50%;
+      transform: translate(-30px, -50%);
+      z-index: 2;
+      text-align: center;
+      border: 1px solid grey;
+    }
+
+    // Hover state
+    &:hover {
+
+      &:before, &:after {
+        height: 50%;
+        border-left-color: $component-highlight;
+        transition: height 0.3s ease-out 0.5s;
+        z-index: 1;
+      }
+
+      .paper-wasp-row__action-menu {
+        display: block;
+      }
+
+    }
+
+  }
+
+}

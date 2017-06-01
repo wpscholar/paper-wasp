@@ -1,0 +1,67 @@
+.paper-wasp-modal {
+
+  background: rgba(100, 100, 100, .85);
+  display: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+
+  &__content {
+    background: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 30px;
+    max-height: calc(100vh - 80px);
+    min-width: 600px;
+    border-radius: 10px;
+
+    p {
+      margin: .5em 0;
+      padding: 0;
+    }
+  }
+
+  &__title {
+    font-size: 28px;
+    border-bottom: 1px solid #dedede;
+    padding: 0 0 .6em 0;
+    margin: 0 0 1em 0;
+    line-height: 1em;
+  }
+
+  &__close, &__close:hover, &__close:focus {
+
+    background: transparent;
+    font-size: 40px;
+    line-height: 1em;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 40px;
+    font-weight: normal;
+
+    &:before {
+      color: $black;
+      content: '\d7';
+    }
+
+  }
+
+  &__scroll {
+    padding: 10px;
+    overflow-y: auto;
+    max-height: calc(100vh - 9.2em);
+  }
+
+}
+
+.paper-wasp-modal--open {
+  display: block;
+}

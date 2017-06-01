@@ -1,0 +1,131 @@
+.paper-wasp-editor {
+
+  .paper-wasp-column {
+
+    position: relative;
+
+    &:before, &:after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 0;
+      border: 3px solid transparent;
+    }
+
+    &:before {
+      top: 0;
+      right: 0;
+    }
+
+    &:after {
+      bottom: 0;
+      left: 0;
+    }
+
+    &__action-add {
+      display: none;
+      background: $black;
+      color: white;
+      position: absolute;
+      bottom: 2px;
+      left: 0;
+      width: 30px;
+      height: 30px;
+      font-size: 20px;
+      line-height: 30px;
+      margin: 0;
+      padding: 0;
+      border-radius: 50%;
+      transform: translate(-15px, 15px);
+      z-index: 1;
+      border: 1px solid grey;
+    }
+
+    &__action-menu {
+      display: none;
+      background: $black;
+      color: white;
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 30px;
+      height: 30px;
+      font-size: 15px;
+      line-height: 29px;
+      margin: 0;
+      padding: 0;
+      border-radius: 50%;
+      transform: translate(15px, -15px);
+      z-index: 1;
+      text-align: center;
+      border: 1px solid grey;
+    }
+
+    &__actions {
+      display: none;
+      bottom: 100%;
+      right: 0;
+      position: absolute;
+    }
+
+    &__action {
+      background-color: black;
+      color: white;
+      font-size: 25px;
+      text-align: center;
+      line-height: 100%;
+      cursor: pointer;
+      display: inline-block;
+      margin: 1px;
+      padding: 0;
+      width: 25px;
+      height: 25px;
+    }
+
+    // Hover state
+    &:hover {
+
+      &:before {
+        height: 100%;
+        border-right-color: $component-highlight;
+        transition: height 0.3s ease-out 0.1s
+      }
+
+      &:after {
+        width: 100%;
+        border-bottom-color: $component-highlight;
+        transition: width 0.3s ease-out 0.1s
+      }
+
+      .paper-wasp-column__action-add,
+      .paper-wasp-column__action-menu,
+      .paper-wasp-column__actions {
+        display: block;
+      }
+    }
+
+    // Empty state
+    &--empty {
+      .paper-wasp-column__content {
+        min-height: 100px;
+        height: 100%;
+        border: 1px dashed black;
+        &:before {
+          content: '+';
+          display: inline-block;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          line-height: 1em;
+          font-size: 24px;
+          transform: translate(-50%, -50%);
+        }
+        &:hover {
+          border-color: $component-highlight;
+        }
+      }
+    }
+
+  }
+
+}

@@ -1,0 +1,743 @@
+[
+  {
+    "uid": 1494519115000,
+    "type": "page",
+    "parent": 0,
+    "index": 0,
+    "data": {}
+  },
+  {
+    "uid": 1494522934459,
+    "type": "row",
+    "parent": 1494519115000,
+    "index": 1,
+    "data": {}
+  },
+  {
+    "uid": 1494522934460,
+    "type": "column",
+    "parent": 1494522934459,
+    "index": 0,
+    "data": {}
+  },
+  {
+    "uid": 1494522936335,
+    "type": "heading",
+    "parent": 1494523120147,
+    "index": 0,
+    "data": {
+      "text": "ANTI-FRAUD &amp; AUTHENTICATION<br /><b>FOR NEXT GENERATION CALL CENTERS</b>"
+    }
+  },
+  {
+    "uid": 1494523120146,
+    "type": "row",
+    "parent": 1494519115000,
+    "index": 0,
+    "data": {},
+    "className": "pindrop-bg-blue"
+  },
+  {
+    "uid": 1494523120147,
+    "type": "column",
+    "parent": 1494523120146,
+    "index": 0,
+    "data": {},
+    "style": {
+      "flexBasis": "75%"
+    }
+  },
+  {
+    "uid": 1494523120148,
+    "type": "column",
+    "parent": 1494523120146,
+    "index": 1,
+    "data": {},
+    "style": {
+      "flexBasis": "25%"
+    }
+  },
+  {
+    "uid": 1494523160019,
+    "type": "button",
+    "parent": 1494523120147,
+    "index": 3,
+    "data": {
+      "text": "Pindrop protect for Anti-fraud →",
+      "backgroundColor": "#fff",
+      "textColor": "#000"
+    },
+    "className": "pindrop__btn-transparent"
+  },
+  {
+    "uid": 1494523263984,
+    "type": "button",
+    "parent": 1494523120147,
+    "index": 4,
+    "data": {
+      "text": "Pindrop Passport for Authentication →",
+      "backgroundColor": "#fff",
+      "textColor": "#000"
+    },
+    "className": "pindrop__btn-transparent"
+  },
+  {
+    "uid": 1494523311380,
+    "type": "row",
+    "parent": 1494519115000,
+    "index": 2,
+    "data": {}
+  },
+  {
+    "uid": 1494523311381,
+    "type": "column",
+    "parent": 1494523311380,
+    "index": 0,
+    "data": {}
+  },
+  {
+    "uid": 1494523311382,
+    "type": "column",
+    "parent": 1494523311380,
+    "index": 1,
+    "data": {}
+  },
+  {
+    "uid": 1494523319970,
+    "type": "heading",
+    "parent": 1494523311381,
+    "index": 0,
+    "data": {
+      "text": "OUR PROVEN SOLUTIONS FOR CALL CENTERS ADDRESS FRAUD ISSUES HEAD ON",
+      "tag": "h3"
+    }
+  },
+  {
+    "uid": 1494523360819,
+    "type": "rich-text",
+    "parent": 1494523311382,
+    "index": 0,
+    "data": {
+      "text": "Call centers exist to deliver fast, direct and highly effective customer service, but they are not living up to that potential. Here's how Pindrop can help."
+    }
+  },
+  {
+    "uid": 1494523439038,
+    "type": "row",
+    "parent": 1494519115000,
+    "index": 3,
+    "data": {}
+  },
+  {
+    "uid": 1494523439039,
+    "type": "column",
+    "parent": 1494523439038,
+    "index": 0,
+    "data": {}
+  },
+  {
+    "uid": 1494523439040,
+    "type": "column",
+    "parent": 1494523439038,
+    "index": 1,
+    "data": {}
+  },
+  {
+    "uid": 1494523439041,
+    "type": "column",
+    "parent": 1494523439038,
+    "index": 2,
+    "data": {}
+  },
+  {
+    "uid": 1494523439042,
+    "type": "column",
+    "parent": 1494523439038,
+    "index": 3,
+    "data": {}
+  },
+  {
+    "uid": 1494523458299,
+    "type": "heading",
+    "parent": 1494523439039,
+    "index": 1,
+    "data": {
+      "text": "REDUCE FRAUD LOSS",
+      "tag": "h4"
+    }
+  },
+  {
+    "uid": 1494523485342,
+    "type": "rich-text",
+    "parent": 1494523439039,
+    "index": 2,
+    "data": {
+      "text": "Quickly and accurately detect fraud over the voice channel."
+    }
+  },
+  {
+    "uid": 1494523521574,
+    "type": "heading",
+    "parent": 1494523439040,
+    "index": 1,
+    "data": {
+      "tag": "h4",
+      "text": "LOWER OPERATIONS COST"
+    }
+  },
+  {
+    "uid": 1494523545169,
+    "type": "rich-text",
+    "parent": 1494523439040,
+    "index": 2,
+    "data": {
+      "text": "Reduce average handle time using risk scores and credentials."
+    }
+  },
+  {
+    "uid": 1494523579089,
+    "type": "heading",
+    "parent": 1494523439041,
+    "index": 1,
+    "data": {
+      "tag": "h4",
+      "text": "IMPROVE CUSTOMER EXPERIENCE"
+    }
+  },
+  {
+    "uid": 1494523592820,
+    "type": "rich-text",
+    "parent": 1494523439041,
+    "index": 2,
+    "data": {
+      "text": "Spend less time on KBAs and more time on customer service."
+    }
+  },
+  {
+    "uid": 1494523617416,
+    "type": "heading",
+    "parent": 1494523439042,
+    "index": 1,
+    "data": {
+      "tag": "h4",
+      "text": "PROTECT BRAND REPUTATION"
+    }
+  },
+  {
+    "uid": 1494523632037,
+    "type": "rich-text",
+    "parent": 1494523439042,
+    "index": 2,
+    "data": {
+      "text": "Reduce call center reconnaissance that leads to data breaches."
+    }
+  },
+  {
+    "uid": 1494523673133,
+    "type": "row",
+    "parent": 1494519115000,
+    "index": 4,
+    "data": {}
+  },
+  {
+    "uid": 1494523673134,
+    "type": "column",
+    "parent": 1494523673133,
+    "index": 0,
+    "data": {}
+  },
+  {
+    "uid": 1494523675590,
+    "type": "button",
+    "parent": 1494523673134,
+    "index": 0,
+    "data": {
+      "text": "See Our Solutions →",
+      "align": "center"
+    },
+    "className": "pindrop__btn-wire-blue"
+  },
+  {
+    "uid": 1494523975873,
+    "type": "image",
+    "parent": 1494523439039,
+    "index": 0,
+    "data": {
+      "alt": "",
+      "attachmentId": 33,
+      "caption": "",
+      "src": "http://dev-paper-wasp.pantheonsite.io/wp-content/uploads/2017/05/Icon_2.png",
+      "title": "Icon_2",
+      "align": "left",
+      "showCaption": false
+    }
+  },
+  {
+    "uid": 1494524021520,
+    "type": "image",
+    "parent": 1494523439040,
+    "index": 0,
+    "data": {
+      "alt": "",
+      "attachmentId": 32,
+      "caption": "",
+      "src": "http://dev-paper-wasp.pantheonsite.io/wp-content/uploads/2017/05/Icon_1.png",
+      "title": "Icon_1",
+      "showCaption": false
+    }
+  },
+  {
+    "uid": 1494524038491,
+    "type": "image",
+    "parent": 1494523439041,
+    "index": 0,
+    "data": {
+      "alt": "",
+      "attachmentId": 35,
+      "caption": "",
+      "src": "http://dev-paper-wasp.pantheonsite.io/wp-content/uploads/2017/05/Icon_4.png",
+      "title": "Icon_4",
+      "showCaption": false
+    }
+  },
+  {
+    "uid": 1494524052955,
+    "type": "image",
+    "parent": 1494523439042,
+    "index": 0,
+    "data": {
+      "alt": "",
+      "attachmentId": 34,
+      "caption": "",
+      "src": "http://dev-paper-wasp.pantheonsite.io/wp-content/uploads/2017/05/Icon_3.png",
+      "title": "Icon_3",
+      "showCaption": false
+    }
+  },
+  {
+    "uid": 1494524646407,
+    "type": "row",
+    "parent": 1494519115000,
+    "index": 6,
+    "data": {},
+    "className": "pindrop-bg-grey"
+  },
+  {
+    "uid": 1494524646408,
+    "type": "column",
+    "parent": 1494524646407,
+    "index": 0,
+    "data": {}
+  },
+  {
+    "uid": 1494524648146,
+    "type": "heading",
+    "parent": 1494524646408,
+    "index": 0,
+    "data": {
+      "align": "center",
+      "tag": "h3",
+      "text": "A REVOLUTIONARY PRODUCT SUITE"
+    }
+  },
+  {
+    "uid": 1494527965726,
+    "type": "rich-text",
+    "parent": 1494524646408,
+    "index": 1,
+    "data": {
+      "text": "Authentication and fraud prevention go hand in hand to achieve total protection. Combine Pindrop Protect and Pindrop Passport to secure your entire call center - both at the live agent and in the IVR.",
+      "align": "center"
+    }
+  },
+  {
+    "uid": 1494528614975,
+    "type": "button",
+    "parent": 1494524646408,
+    "index": 2,
+    "data": {
+      "text": "See Why Our Solutions are Better Together →",
+      "align": "center"
+    },
+    "className": "pindrop__btn-transparent"
+  },
+  {
+    "uid": 1494528641870,
+    "type": "row",
+    "parent": 1494519115000,
+    "index": 7,
+    "data": {},
+    "className": "pindrop-bg-grey"
+  },
+  {
+    "uid": 1494528641871,
+    "type": "column",
+    "parent": 1494528641870,
+    "index": 0,
+    "data": {}
+  },
+  {
+    "uid": 1494528641872,
+    "type": "column",
+    "parent": 1494528641870,
+    "index": 1,
+    "data": {}
+  },
+  {
+    "uid": 1494528846424,
+    "type": "image",
+    "parent": 1494528641871,
+    "index": 0,
+    "data": {
+      "alt": "",
+      "attachmentId": 35,
+      "caption": "",
+      "src": "http://dev-paper-wasp.pantheonsite.io/wp-content/uploads/2017/05/Icon_4.png",
+      "title": "Icon_4",
+      "showCaption": false
+    }
+  },
+  {
+    "uid": 1494528916555,
+    "type": "heading",
+    "parent": 1494528641871,
+    "index": 1,
+    "data": {
+      "color": "#2c7eb4",
+      "text": "PINDROP PROTECT",
+      "tag": "h4"
+    }
+  },
+  {
+    "uid": 1494530778900,
+    "type": "image",
+    "parent": 1494528641872,
+    "index": 0,
+    "data": {
+      "alt": "",
+      "attachmentId": 36,
+      "caption": "",
+      "src": "http://dev-paper-wasp.pantheonsite.io/wp-content/uploads/2017/05/Icon_5.png",
+      "title": "Icon_5"
+    }
+  },
+  {
+    "uid": 1494530833461,
+    "type": "heading",
+    "parent": 1494528641872,
+    "index": 1,
+    "data": {
+      "color": "#e67d49",
+      "tag": "h4",
+      "text": "PINDROP PASSPORT"
+    }
+  },
+  {
+    "uid": 1494530920570,
+    "type": "rich-text",
+    "parent": 1494528641871,
+    "index": 2,
+    "data": {
+      "text": "<p><strong>Detect fraid at the live agent by analyzing the full audio signal, number reutation, and more to create risk scores and unique phoneprints.</strong></p>"
+    }
+  },
+  {
+    "uid": 1494533665574,
+    "type": "rich-text",
+    "parent": 1494528641871,
+    "index": 3,
+    "data": {
+      "text": "<p> - Identify risky calls within 30 seconds</p>\n<p> - Reduce average handle time</p>\n<p> - Reduce time spent on frustrating KBAs</p>\n<p> - Flag suspicious calls before agents reveal customer PII</p>\n<p> </p>"
+    }
+  },
+  {
+    "uid": 1494533694861,
+    "type": "rich-text",
+    "parent": 1494528641872,
+    "index": 3,
+    "data": {
+      "text": "<p> - Dynamic risk scores help stop fraudsters</p>\n<p> - Increase calls that stay in the IVR</p>\n<p> - Improve customer IVR self service options</p>\n<p> - Stop fraudsters from mining the IVR for customer data</p>\n<p> </p>"
+    }
+  },
+  {
+    "uid": 1494533741908,
+    "type": "rich-text",
+    "parent": 1494528641872,
+    "index": 2,
+    "data": {
+      "text": "<p><strong>Authenticate customers in the IVR by analyzing DTMF tones, calling patterns, and more to create unique IVR credentials for legitimate callers.</strong></p>"
+    }
+  },
+  {
+    "uid": 1494533822859,
+    "type": "button",
+    "parent": 1494528641871,
+    "index": 4,
+    "data": {
+      "text": "Learn More →"
+    },
+    "className": "pindrop__btn-fill"
+  },
+  {
+    "uid": 1494533878867,
+    "type": "button",
+    "parent": 1494528641872,
+    "index": 4,
+    "data": {
+      "text": "Learn More →"
+    },
+    "className": "pindrop__btn-fill"
+  },
+  {
+    "uid": 1494534120401,
+    "type": "row",
+    "parent": 1494519115000,
+    "index": 8,
+    "data": {}
+  },
+  {
+    "uid": 1494534120402,
+    "type": "column",
+    "parent": 1494534120401,
+    "index": 0,
+    "data": {}
+  },
+  {
+    "uid": 1494534123850,
+    "type": "heading",
+    "parent": 1494534120402,
+    "index": 0,
+    "data": {
+      "text": "UNRIVALED RISK SCORES THANKS<br />TO PROPRIETARY PINDROP TECHNOLOGIES",
+      "align": "center",
+      "tag": "h3"
+    }
+  },
+  {
+    "uid": 1494534289885,
+    "type": "row",
+    "parent": 1494519115000,
+    "index": 9,
+    "data": {}
+  },
+  {
+    "uid": 1494534289886,
+    "type": "column",
+    "parent": 1494534289885,
+    "index": 0,
+    "data": {}
+  },
+  {
+    "uid": 1494534292176,
+    "type": "row",
+    "parent": 1494519115000,
+    "index": 11,
+    "data": {}
+  },
+  {
+    "uid": 1494534292177,
+    "type": "column",
+    "parent": 1494534292176,
+    "index": 0,
+    "data": {}
+  },
+  {
+    "uid": 1494534294571,
+    "type": "heading",
+    "parent": 1494534292177,
+    "index": 0,
+    "data": {
+      "text": "SECURE THE WORLD WITH US",
+      "align": "center",
+      "tag": "h3",
+      "color": "#9B0000"
+    }
+  },
+  {
+    "uid": 1494534399545,
+    "type": "button",
+    "parent": 1494534292177,
+    "index": 2,
+    "data": {
+      "text": "Join Our Team →",
+      "align": "center"
+    },
+    "className": "pindrop__btn-wire-blue"
+  },
+  {
+    "uid": 1494537619720,
+    "type": "row",
+    "parent": 1494519115000,
+    "index": 12,
+    "data": {},
+    "className": "pindrop-homepage-grid"
+  },
+  {
+    "uid": 1494537619721,
+    "type": "column",
+    "parent": 1494537619720,
+    "index": 0,
+    "data": {},
+    "className": "vertical-align"
+  },
+  {
+    "uid": 1494537619722,
+    "type": "column",
+    "parent": 1494537619720,
+    "index": 1,
+    "data": {},
+    "className": "vertical-align"
+  },
+  {
+    "uid": 1494539704640,
+    "type": "row",
+    "parent": 1494519115000,
+    "index": 10,
+    "data": {}
+  },
+  {
+    "uid": 1494539704641,
+    "type": "column",
+    "parent": 1494539704640,
+    "index": 0,
+    "data": {},
+    "style": {
+      "flexBasis": "40%"
+    }
+  },
+  {
+    "uid": 1494539704642,
+    "type": "column",
+    "parent": 1494539704640,
+    "index": 1,
+    "data": {},
+    "style": {
+      "flexBasis": "60%"
+    }
+  },
+  {
+    "uid": 1494539731543,
+    "type": "heading",
+    "parent": 1494539704641,
+    "index": 0,
+    "data": {
+      "text": "We Secure The Largest Call Centers Worldwide",
+      "tag": "h3"
+    }
+  },
+  {
+    "uid": 1494539778462,
+    "type": "rich-text",
+    "parent": 1494539704641,
+    "index": 1,
+    "data": {
+      "text": "<p><span style=\"color: #999999\">Our solutions are</span><br /><span style=\"color: #999999\"><strong>Universal</strong>, <strong>Fast</strong>, <strong>Low-friction</strong>,</span><br /><span style=\"color: #999999\"><strong>Accurate</strong> &amp; <strong>Foolproof</strong></span></p>"
+    }
+  },
+  {
+    "uid": 1494539824368,
+    "type": "button",
+    "parent": 1494539704641,
+    "index": 2,
+    "data": {
+      "text": "Learn More →"
+    },
+    "className": "pindrop__btn-transparent"
+  },
+  {
+    "uid": 1494539887297,
+    "type": "heading",
+    "parent": 1494537619721,
+    "index": 1,
+    "data": {
+      "text": "2016 Call Center Fraud Report"
+    }
+  },
+  {
+    "uid": 1494539966580,
+    "type": "button",
+    "parent": 1494537619721,
+    "index": 2,
+    "data": {
+      "text": "Read More →"
+    },
+    "className": "pindrop__btn-wire-white"
+  },
+  {
+    "uid": 1494539991644,
+    "type": "heading",
+    "parent": 1494537619721,
+    "index": 0,
+    "data": {
+      "text": "WHITE PAPER",
+      "tag": "h5",
+      "color": "lightgrey"
+    }
+  },
+  {
+    "uid": 1494540046597,
+    "type": "heading",
+    "parent": 1494537619722,
+    "index": 0,
+    "data": {
+      "text": "VIDEO",
+      "tag": "h5",
+      "color": "lightgrey"
+    }
+  },
+  {
+    "uid": 1494540073624,
+    "type": "heading",
+    "parent": 1494537619722,
+    "index": 1,
+    "data": {
+      "text": "Securing the Phone Channel"
+    }
+  },
+  {
+    "uid": 1494540096203,
+    "type": "button",
+    "parent": 1494537619722,
+    "index": 2,
+    "data": {
+      "text": "Read More →"
+    },
+    "className": "pindrop__btn-wire-white"
+  },
+  {
+    "uid": 1494540187622,
+    "type": "rich-text",
+    "parent": 1494523120148,
+    "index": 0,
+    "data": {
+      "text": "<div style=\"background-color: #0f1f3d;color: lightgrey;border: 1px solid lightgrey;width: 240px;height: 220px;padding-top: 50px;margin-top: 25px\">\n<p style=\"text-align: center\">FRAUD CAUSED<br />$10 BILLION IN LOSSES<br />LAST YEAR.</p>\n<p style=\"text-align: center\">2017 Fraud Report<br /> →</p>\n</div>"
+    }
+  },
+  {
+    "uid": 1494540550910,
+    "type": "rich-text",
+    "parent": 1494523120147,
+    "index": 2,
+    "data": {
+      "text": "<p>Pindrop technology enables security, identity and trust on every voice interaction for some of the largest call centers in the world. Pindrop's patented multi-factor technology quickly and accurately helps separate legitimate callers from fraudsters.</p>"
+    }
+  },
+  {
+    "uid": 1494540648289,
+    "type": "rich-text",
+    "parent": 1494534120402,
+    "index": 3,
+    "data": {
+      "text": "<p>Pindrop multi-factor anti-fraud and authentication solutions provide fast, highly accurate intelligence on every call without adding frictions. The best part? Unlike legacy call center solutions, they are very difficult for fraudsters to fool or bypass.</p>"
+    }
+  },
+  {
+    "uid": 1494540673502,
+    "type": "rich-text",
+    "parent": 1494534292177,
+    "index": 1,
+    "data": {
+      "text": "<p>We work with the world's largest banks, insurers, brokerages and retailers, detection over 80% of fraud -- even for attackers never seen before. Our sole mission is to restore confidence in the security of phone-based transactions.</p>"
+    }
+  }
+]

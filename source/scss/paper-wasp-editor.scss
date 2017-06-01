@@ -1,0 +1,49 @@
+@import 'variables';
+@import 'global';
+@import '../js/components/paper-wasp-component/styles/component';
+@import '../js/components/paper-wasp-component/styles/component-editor';
+@import '../js/components/paper-wasp-component-column/styles/component-edit-mode';
+@import '../js/components/paper-wasp-component-rich-text/styles/component-editor';
+@import '../js/components/paper-wasp-component-row/styles/component-edit-mode';
+@import "../js/components/paper-wasp-component-video/styles/component-editor";
+@import '../js/modules/paper-wasp-component-selector/styles';
+@import 'paper-wasp-editor/action-bar';
+@import 'paper-wasp-editor/buttons';
+@import 'paper-wasp-editor/modal';
+@import 'paper-wasp-editor/screen-add-section';
+@import 'components';
+
+.paper-wasp-editor__add {
+
+  margin: 20px 0;
+  position: relative;
+  text-align: center;
+
+}
+
+.paper-wasp-field {
+  margin: 1em 0;
+  input {
+    padding: .5em;
+  }
+  select {
+    display: block;
+    width: 100%;
+  }
+  & span:first-child {
+    display: block;
+  }
+  span {
+    font-weight: normal;
+  }
+}
+
+.paper-wasp-editor {
+  [draggable] {
+    user-select: text;
+  }
+}
+
+[data-pw-drag-handle] {
+  cursor: move;
+}
