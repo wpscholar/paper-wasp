@@ -4,8 +4,6 @@ import {getContext} from 'paper-wasp-editor/selectors';
 
 import Component from './component';
 
-const {ajaxUrl, postId} = window.paperWasp;
-
 function getEmbedShortcode(url, width, height) {
     // Default width and height to WordPress defaults for video shortcode
     // See wp_video_shortcode() defaults in wp-includes/media.php
@@ -14,10 +12,12 @@ function getEmbedShortcode(url, width, height) {
 
 const Video = connect(
     state => ({
-        context: getContext(state)
+        ajaxUrl: state.container.ajaxUrl,
+        context: getContext(state),
+        postId: state.container.postId
     }),
     (dispatch, {uid}) => ({
-        updateEmbed: (...embedParams) => {
+        updateEmbed: (ajaxUrl, postId, ...embedParams) => {
 
             const formData = new window.FormData();
             formData.append('action', 'parse-embed');

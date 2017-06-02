@@ -1,13 +1,13 @@
 // @flow
-import {PaperWaspEditor} from 'paper-wasp-editor';
 
-import componentRegistry from './component-registry';
+import {PaperWaspEditor} from 'paper-wasp-editor';
 
 const {
     paperWasp: {
         allowedTags,
         allowedAttributes,
         components,
+        componentRegistry,
         paperWaspPath,
         postId,
         restBase,

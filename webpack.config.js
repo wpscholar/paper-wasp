@@ -25,6 +25,9 @@ const config = {
             './source/scss/paper-wasp-editor.scss',
             'react',
             './source/js/paper-wasp-editor'
+        ],
+        'paper-wasp-component-registry': [
+            './source/js/paper-wasp-component-registry'
         ]
     },
     output: {

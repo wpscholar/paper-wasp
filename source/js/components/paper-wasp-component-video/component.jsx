@@ -6,6 +6,7 @@ class Video extends Component {
 
     // eslint-disable-next-line react/sort-comp
     props: {
+        ajaxUrl: string,
         className: string,
         context: string,
         data: {
@@ -17,6 +18,7 @@ class Video extends Component {
             url: string
         },
         id: string,
+        postId: number,
         updateEmbed: Function
     };
 
@@ -36,7 +38,7 @@ class Video extends Component {
     }
 
     render() {
-        const {className, context, data, id} = this.props;
+        const {ajaxUrl, className, context, data, id, postId} = this.props;
         const {align = 'left', embed, height = 0, isResponsive = true, width = 0, url} = data;
         const classes = ['paper-wasp-video', className];
         if (isResponsive) {
@@ -47,7 +49,7 @@ class Video extends Component {
         return (
             <div className={classes.join(' ').trim()} id={id}>
                 {context === 'view' ? (
-                    getVideoShortcode(url, width, height)
+                    getVideoShortcode(ajaxUrl, postId, url, width, height)
                 ) : (
                     <div dangerouslySetInnerHTML={{__html: embed}} />
                 )}

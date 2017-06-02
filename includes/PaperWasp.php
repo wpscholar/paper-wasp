@@ -181,10 +181,18 @@ class PaperWasp {
 				);
 
 				wp_enqueue_media();
-				wp_register_script( 'paper-wasp-tinymce', 'https://cdn.tinymce.com/4/tinymce.min.js?ver=4.7.3', array(), PAPER_WASP_VERSION );
+
+				// Styles
 				wp_enqueue_style( 'paper-wasp-editor', plugins_url( '/assets/css/paper-wasp-editor.css', PAPER_WASP_FILE ), array(), PAPER_WASP_VERSION );
-				wp_enqueue_script( 'paper-wasp-editor', plugins_url( '/assets/js/paper-wasp-editor.js', PAPER_WASP_FILE ), array( 'paper-wasp-tinymce' ), PAPER_WASP_VERSION, true );
-				wp_localize_script( 'paper-wasp-editor', 'paperWasp', $data );
+
+				// Scripts
+				wp_register_script( 'paper-wasp-tinymce', 'https://cdn.tinymce.com/4/tinymce.min.js?ver=4.7.3', array(), '4.7.3' );
+				wp_register_script( 'paper-wasp-component-registry', plugins_url( '/assets/js/paper-wasp-component-registry.js', PAPER_WASP_FILE ), array(), PAPER_WASP_VERSION );
+				wp_enqueue_script( 'paper-wasp-editor', plugins_url( '/assets/js/paper-wasp-editor.js', PAPER_WASP_FILE ), array(
+					'paper-wasp-component-registry',
+					'paper-wasp-tinymce'
+				), PAPER_WASP_VERSION, true );
+				wp_localize_script( 'paper-wasp-component-registry', 'paperWasp', $data );
 
 			} );
 		}

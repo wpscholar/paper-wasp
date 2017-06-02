@@ -11,6 +11,10 @@ import {Heading, HeadingEditor} from 'paper-wasp-component-heading';
 import {Button, ButtonEditor} from 'paper-wasp-component-button';
 import {Video, VideoEditor} from 'paper-wasp-component-video';
 
+const {paperWasp: {componentRegistry = ComponentRegistry}} = window;
+
+window.paperWasp.componentRegistry = componentRegistry;
+
 const components = [
     {
         canAdd: false,
@@ -140,6 +144,4 @@ const components = [
     }
 ];
 
-components.forEach(component => ComponentRegistry.set(component.type, component));
-
-export default ComponentRegistry;
+components.forEach(component => componentRegistry.set(component.type, component));

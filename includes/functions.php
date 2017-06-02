@@ -34,6 +34,42 @@ function paper_wasp_edit_link( WP_Post $post = null ) {
 }
 
 /**
+ * Register a Paper Wasp component
+ *
+ * @param string $type
+ * @param string $label
+ * @param array $args
+ */
+function paper_wasp_register_component( $type, $label, $args = [] ) {
+
+	$defaults = array(
+		'canAdd'       => true,
+		'canDelete'    => true,
+		'canEdit'      => true,
+		'isComponent'  => true,
+		'isDynamic'    => false,
+		'isSection'    => false,
+		'thumbnailUrl' => null,
+	);
+
+	$component = array(
+		'type'  => sanitize_title_with_dashes( $type ),
+		'label' => esc_html( $label ),
+	);
+
+	foreach ( $defaults as $key => $default ) {
+		$component[ $key ] = array_key_exists( $key, $args ) ? $args[ $key ] : $default;
+	}
+
+	add_filter( 'paper_wasp_register_component', function ( array $components ) use ( $component ) {
+		$components[] = $component;
+
+		return $components;
+	} );
+
+}
+
+/**
  * Helper REST API function for validating a post ID.
  *
  * @param int $post_id

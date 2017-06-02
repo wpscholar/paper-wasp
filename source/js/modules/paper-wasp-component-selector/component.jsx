@@ -10,8 +10,6 @@ type ComponentType = {
     type: string
 }
 
-const {paperWaspPath} = window.paperWasp;
-
 class ComponentSelector extends Component {
 
     // eslint-disable-next-line react/sort-comp
@@ -52,6 +50,8 @@ class ComponentSelector extends Component {
 
         const {componentTypes, onAddComponent, onComponentTypeChange} = this;
         const {componentIndex: index} = this.state;
+        const {store} = this.context;
+        const paperWaspPath = store.getState().container.paperWaspPath;
 
         return (
             <div className="paper-wasp-component-selector">
