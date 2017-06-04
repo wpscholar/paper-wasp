@@ -3,6 +3,9 @@
   &__selector {
     display: flex;
     justify-content: space-between;
+    .paper-wasp-field {
+      display: flex;
+    }
     label {
       flex-basis: 75%;
     }

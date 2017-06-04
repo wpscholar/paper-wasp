@@ -22,19 +22,30 @@
 }
 
 .paper-wasp-field {
+  display: block;
   margin: 1em 0;
   input {
     padding: .5em;
+    width: 100%;
+    font-size: 16px;
   }
   select {
     display: block;
     width: 100%;
+    font-family: sans-serif;
+    font-size: 16px;
+    line-height: 1.15;
+    text-transform: none;
   }
   & span:first-child {
     display: block;
   }
   span {
     font-weight: normal;
+  }
+  span:first-child {
+    display: block;
+    margin-bottom: .25em;
   }
 }
 

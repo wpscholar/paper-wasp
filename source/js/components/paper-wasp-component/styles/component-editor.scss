@@ -10,11 +10,13 @@
 
   &__menu_option {
     background: none;
+    border: none;
     color: #66757F;
     display: inline-block;
     font-size: 20px;
     margin: 0 0 0 .25em;
     padding: .25em .5em;
+    border-radius: 6px;
     &:hover, &:focus {
       background: #dedede;
     }
@@ -32,6 +34,9 @@
 
   &__action-delete {
     margin-top: 2em;
+    font-size: 16px;
+    text-decoration: none;
+    border: none;
   }
 
 }
