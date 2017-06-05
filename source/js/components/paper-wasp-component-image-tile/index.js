@@ -1,2 +1,2 @@
-export * from './container';
+export * from './component';
 export * from './component-editor';

@@ -1,8 +1,10 @@
 import ComponentRegistry from 'component-registry';
 
 import {Column, ColumnEditor} from 'paper-wasp-component-column';
+import {Grid, GridEditor} from 'paper-wasp-component-grid';
 import {Row, RowEditor} from 'paper-wasp-component-row';
 import {Image, ImageEditor} from 'paper-wasp-component-image';
+import {ImageTile, ImageTileEditor} from 'paper-wasp-component-image-tile';
 import {Text, TextEditor} from 'paper-wasp-component-text';
 import {PullQuote, PullQuoteEditor} from 'paper-wasp-component-pull-quote';
 import {Quote, QuoteEditor} from 'paper-wasp-component-quote';
@@ -27,6 +29,18 @@ const components = [
         isSection: false,
         label: 'Column',
         type: 'column',
+    },
+    {
+        canAdd: true,
+        canDelete: true,
+        canEdit: true,
+        class: Grid,
+        classEditor: GridEditor,
+        isComponent: true,
+        isDynamic: false,
+        isSection: false,
+        label: 'Grid',
+        type: 'grid',
     },
     {
         canAdd: false,
@@ -65,6 +79,19 @@ const components = [
         label: 'Image',
         thumbnailUrl: '/assets/img/image.jpeg',
         type: 'image',
+    },
+    {
+        canAdd: true,
+        canDelete: true,
+        canEdit: true,
+        class: ImageTile,
+        classEditor: ImageTileEditor,
+        isComponent: true,
+        isDynamic: false,
+        isSection: false,
+        label: 'Image Tile',
+        thumbnailUrl: '/assets/img/image.jpeg',
+        type: 'image-tile',
     },
     {
         canAdd: true,

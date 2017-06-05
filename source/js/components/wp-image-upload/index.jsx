@@ -12,6 +12,10 @@ class WordPressImageUpload extends Component {
         src: string
     };
 
+    static defaultProps = {
+        addImageText: 'Add Image'
+    };
+
     uploader: {
         open: Function,
         state: Function
@@ -60,7 +64,7 @@ class WordPressImageUpload extends Component {
     }
 
     renderButton() {
-        const {addImageText = 'Add Image'} = this.props;
+        const {addImageText} = this.props;
         return (
             <button className="paper-wasp-button-secondary" onClick={this.onAddImage} type="button">
                 {addImageText}

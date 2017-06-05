@@ -1,25 +1,30 @@
 // @flow
 
 type Props = {
+    align: string,
+    alt: string,
+    caption: string,
     className: string,
-    data: {
-        align: string,
-        alt: string,
-        caption: string,
-        fit: string,
-        link: string,
-        showCaption: boolean,
-        src: string,
-        title: string
-    },
-    id: string
+    fit: string,
+    id: string,
+    link: string,
+    showCaption: boolean,
+    src: string,
+    title: string,
 };
 
 function Image(
     {
+        align = 'left',
+        alt = '',
+        caption,
         className = '',
-        data: {align = 'left', alt, caption, fit = 'natural', link, showCaption, src, title},
-        id
+        fit = 'natural',
+        id,
+        link,
+        showCaption,
+        src,
+        title,
     }: Props
 ) {
 
@@ -43,4 +48,4 @@ function Image(
     );
 }
 
-export {Image};
+export default Image;
