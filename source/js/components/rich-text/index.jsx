@@ -85,7 +85,6 @@ class RichText extends Component {
         return (
             <div>
                 <label className="paper-wasp-field">
-                    <span>Rich Text</span>
                     <TinyMCEInput
                         onChange={onTextChange}
                         tinymceConfig={TINYMCE_CONFIG}
