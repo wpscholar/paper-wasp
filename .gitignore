@@ -3,3 +3,6 @@ node_modules
 
 # PHPStorm
 .idea
+
+# VENDOR
+/vendor
