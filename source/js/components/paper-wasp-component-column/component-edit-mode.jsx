@@ -17,7 +17,18 @@ type Props = {
 };
 
 function Column(
-    {children, className, id, uid, onAdd, onDragOver, onDragStart, onDrop, onMenuClick, style}: Props
+    {
+        children,
+        className,
+        id,
+        uid,
+        onAdd,
+        onDragOver,
+        onDragStart,
+        onDrop,
+        onMenuClick,
+        style
+    }: Props
 ) {
 
     const empty: Boolean = !Children.count(children);

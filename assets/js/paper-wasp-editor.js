@@ -3191,10 +3191,13 @@ function onDragEnd() {
  *
  * @param dispatch {Function} The dispatch function from the store.
  * @param uid {int} The ID of the parent to which children will be added.
+ * @param group {string} The type of items to show in the selector (e.g. component, tile, etc.)
  */
 function renderComponentSelector(dispatch, uid) {
+    var group = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'component';
+
     dispatch(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_7__action_creators__["a" /* setActiveComponent */])(uid));
-    dispatch(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_7__action_creators__["b" /* setModalContent */])(React.createElement(__WEBPACK_IMPORTED_MODULE_3_paper_wasp_component_selector__["a" /* PaperWaspComponentSelector */], null)));
+    dispatch(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_7__action_creators__["b" /* setModalContent */])(React.createElement(__WEBPACK_IMPORTED_MODULE_3_paper_wasp_component_selector__["a" /* PaperWaspComponentSelector */], { group: group })));
     dispatch(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_7__action_creators__["c" /* openModal */])());
 }
 
@@ -3945,16 +3948,15 @@ module.exports = function(module) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return getActiveComponentId; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return getActiveComponent; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return getActiveComponentLabel; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return getComponentOptions; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return getActiveComponentId; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return getActiveComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return getActiveComponentLabel; });
 /* unused harmony export getComponentTypeObject */
 /* unused harmony export getCanAdd */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return getCanDelete; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return getCanEdit; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return getCanDelete; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return getCanEdit; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return getContext; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return getCurrentComponentLabel; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return getCurrentComponentLabel; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_reselect__ = __webpack_require__(67);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_reselect___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_reselect__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash_find__ = __webpack_require__(46);
@@ -4001,32 +4003,15 @@ var getActiveComponentLabel = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_
 });
 
 /**
- * Get component options for the component selector
- *
- * @param container {Object}
- * @returns {Array}
- */
-var getComponentOptions = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_reselect__["createSelector"])([__WEBPACK_IMPORTED_MODULE_2_paper_wasp_selectors__["b" /* getContainer */]], function (_ref3) {
-  var componentRegistry = _ref3.componentRegistry;
-
-  return componentRegistry.filter('canAdd').map(function (_ref4) {
-    var label = _ref4.label,
-        thumbnailUrl = _ref4.thumbnailUrl,
-        type = _ref4.type;
-    return { label: label, thumbnailUrl: thumbnailUrl, type: type };
-  });
-});
-
-/**
  * Get the component type object
  *
  * @param container {Container}
  * @param type {string}
  * @returns {string}
  */
-var getComponentTypeObject = function getComponentTypeObject(_ref5, _ref6) {
-  var container = _ref5.container;
-  var type = _ref6.type;
+var getComponentTypeObject = function getComponentTypeObject(_ref3, _ref4) {
+  var container = _ref3.container;
+  var type = _ref4.type;
   return container.componentRegistry.get(type);
 };
 
@@ -4036,8 +4021,8 @@ var getComponentTypeObject = function getComponentTypeObject(_ref5, _ref6) {
  * @param componentTypeObject {Object}
  * @returns {boolean}
  */
-var getCanAdd = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_reselect__["createSelector"])([getComponentTypeObject], function (_ref7) {
-  var canAdd = _ref7.canAdd;
+var getCanAdd = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_reselect__["createSelector"])([getComponentTypeObject], function (_ref5) {
+  var canAdd = _ref5.canAdd;
   return canAdd;
 });
 
@@ -4047,8 +4032,8 @@ var getCanAdd = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_reselect__["cr
  * @param componentTypeObject {Object}
  * @returns {boolean}
  */
-var getCanDelete = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_reselect__["createSelector"])([getComponentTypeObject], function (_ref8) {
-  var canDelete = _ref8.canDelete;
+var getCanDelete = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_reselect__["createSelector"])([getComponentTypeObject], function (_ref6) {
+  var canDelete = _ref6.canDelete;
   return canDelete;
 });
 
@@ -4058,8 +4043,8 @@ var getCanDelete = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_reselect__[
  * @param componentTypeObject {Object}
  * @returns {boolean}
  */
-var getCanEdit = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_reselect__["createSelector"])([getComponentTypeObject], function (_ref9) {
-  var canEdit = _ref9.canEdit;
+var getCanEdit = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_reselect__["createSelector"])([getComponentTypeObject], function (_ref7) {
+  var canEdit = _ref7.canEdit;
   return canEdit;
 });
 
@@ -4069,8 +4054,8 @@ var getCanEdit = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_reselect__["c
  * @param context {string}
  * @returns {string}
  */
-var getContext = function getContext(_ref10) {
-  var context = _ref10.context;
+var getContext = function getContext(_ref8) {
+  var context = _ref8.context;
   return context;
 };
 
@@ -4081,9 +4066,9 @@ var getContext = function getContext(_ref10) {
  * @param activeComponent {Component}
  * @returns {string}
  */
-var getCurrentComponentLabel = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_reselect__["createSelector"])([__WEBPACK_IMPORTED_MODULE_2_paper_wasp_selectors__["b" /* getContainer */], __WEBPACK_IMPORTED_MODULE_2_paper_wasp_selectors__["c" /* getCurrentComponent */]], function (_ref11, _ref12) {
-  var componentRegistry = _ref11.componentRegistry;
-  var type = _ref12.type;
+var getCurrentComponentLabel = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_reselect__["createSelector"])([__WEBPACK_IMPORTED_MODULE_2_paper_wasp_selectors__["b" /* getContainer */], __WEBPACK_IMPORTED_MODULE_2_paper_wasp_selectors__["c" /* getCurrentComponent */]], function (_ref9, _ref10) {
+  var componentRegistry = _ref9.componentRegistry;
+  var type = _ref10.type;
   return componentRegistry.getProperty(type, 'label');
 });
 
@@ -22310,7 +22295,7 @@ if ("development" !== 'production' && typeof isCrushed.name === 'string' && isCr
  * @param data {Component}
  * @returns {Component|null}
  */
-var getComponentEditorChildren = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_reselect__["createSelector"])([__WEBPACK_IMPORTED_MODULE_1_paper_wasp_selectors__["b" /* getContainer */], __WEBPACK_IMPORTED_MODULE_2_paper_wasp_editor_selectors__["g" /* getActiveComponent */]], function (_ref, data) {
+var getComponentEditorChildren = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_reselect__["createSelector"])([__WEBPACK_IMPORTED_MODULE_1_paper_wasp_selectors__["b" /* getContainer */], __WEBPACK_IMPORTED_MODULE_2_paper_wasp_editor_selectors__["f" /* getActiveComponent */]], function (_ref, data) {
     var componentRegistry = _ref.componentRegistry;
     var type = data.type;
 
@@ -22358,35 +22343,8 @@ function hideComponentSelector() {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PaperWaspComponentSelector; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_redux__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_paper_wasp_action_creators__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_paper_wasp_selectors__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_paper_wasp_editor_selectors__ = __webpack_require__(34);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_paper_wasp_editor_functions__ = __webpack_require__(24);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__component__ = __webpack_require__(149);
-
-
-
-
-
-
-
-
-var PaperWaspComponentSelector = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_react_redux__["a" /* connect */])(function (state) {
-    return {
-        componentTypes: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3_paper_wasp_editor_selectors__["b" /* getComponentOptions */])(state),
-        parent: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3_paper_wasp_editor_selectors__["c" /* getActiveComponentId */])(state)
-    };
-}, function (dispatch) {
-    return {
-        addComponent: function addComponent(parent, type, store) {
-            dispatch(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_paper_wasp_action_creators__["f" /* addComponent */])({ parent: parent, type: type }));
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4_paper_wasp_editor_functions__["d" /* editComponent */])(dispatch, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_paper_wasp_selectors__["e" /* getLastAddedComponentId */])(store.getState()));
-        }
-    };
-})(__WEBPACK_IMPORTED_MODULE_5__component__["a" /* default */]);
-
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__container__ = __webpack_require__(412);
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__container__["a"]; });
 
 
 /***/ }),
@@ -23034,11 +22992,13 @@ function PaperWaspComponent(_ref) {
         classes.push('paper-wasp-component--empty');
     }
 
+    var group = 'component'; // TODO: Dynamically set component type from component registry (isComponent / isTile)
+
     return React.createElement(
         'div',
         {
             className: classes.join(' '),
-            'data-pw-component-type': 'component',
+            'data-pw-component-type': group,
             'data-pw-uid': uid,
             draggable: true,
             onDoubleClick: canEdit ? onEdit : null,
@@ -23052,7 +23012,7 @@ function PaperWaspComponent(_ref) {
                 type: 'button' },
             React.createElement(
                 'span',
-                { 'data-pw-drag-handle': 'component' },
+                { 'data-pw-drag-handle': group },
                 '\u2630'
             ),
             ' ',
@@ -23107,29 +23067,30 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var PaperWaspComponent = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_react_redux__["a" /* connect */])(function (state, props) {
     return {
-        canDelete: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5_paper_wasp_editor_selectors__["d" /* getCanDelete */])(state, props),
-        canEdit: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5_paper_wasp_editor_selectors__["e" /* getCanEdit */])(state, props),
+        canDelete: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5_paper_wasp_editor_selectors__["c" /* getCanDelete */])(state, props),
+        canEdit: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5_paper_wasp_editor_selectors__["d" /* getCanEdit */])(state, props),
         childComponents: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_paper_wasp_selectors__["d" /* getChildComponents */])(state, props),
-        label: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5_paper_wasp_editor_selectors__["f" /* getCurrentComponentLabel */])(state, props)
+        label: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5_paper_wasp_editor_selectors__["e" /* getCurrentComponentLabel */])(state, props)
     };
 }, function (dispatch, _ref) {
     var uid = _ref.uid;
 
     return {
         onDragStart: __WEBPACK_IMPORTED_MODULE_3_paper_wasp_editor_functions__["b" /* onDragStart */],
-        onEdit: function onEdit() {
-            return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3_paper_wasp_editor_functions__["d" /* editComponent */])(dispatch, uid);
+        onEdit: function onEdit(e) {
+            e.stopPropagation();
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3_paper_wasp_editor_functions__["d" /* editComponent */])(dispatch, uid);
         }
     };
 })(__WEBPACK_IMPORTED_MODULE_7__component__["a" /* default */]);
 
 var PaperWaspComponentEditor = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_react_redux__["a" /* connect */])(function (state) {
-    var component = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5_paper_wasp_editor_selectors__["g" /* getActiveComponent */])(state);
+    var component = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5_paper_wasp_editor_selectors__["f" /* getActiveComponent */])(state);
     return _extends({
-        label: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5_paper_wasp_editor_selectors__["h" /* getActiveComponentLabel */])(state)
+        label: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5_paper_wasp_editor_selectors__["g" /* getActiveComponentLabel */])(state)
     }, component, {
-        canDelete: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5_paper_wasp_editor_selectors__["d" /* getCanDelete */])(state, component),
-        canEdit: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5_paper_wasp_editor_selectors__["e" /* getCanEdit */])(state, component),
+        canDelete: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5_paper_wasp_editor_selectors__["c" /* getCanDelete */])(state, component),
+        canEdit: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5_paper_wasp_editor_selectors__["d" /* getCanEdit */])(state, component),
         children: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__selectors__["a" /* getComponentEditorChildren */])(state)
     });
 }, function (dispatch, _ref2) {
@@ -41812,6 +41773,66 @@ module.exports = exports['default'];
 __webpack_require__(294);
 __webpack_require__(8);
 module.exports = __webpack_require__(293);
+
+
+/***/ }),
+/* 401 */,
+/* 402 */,
+/* 403 */,
+/* 404 */,
+/* 405 */,
+/* 406 */,
+/* 407 */,
+/* 408 */,
+/* 409 */,
+/* 410 */,
+/* 411 */,
+/* 412 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PaperWaspComponentSelector; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash_filter__ = __webpack_require__(80);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash_filter___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_lodash_filter__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_redux__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_paper_wasp_action_creators__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_paper_wasp_selectors__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_paper_wasp_editor_selectors__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_paper_wasp_editor_functions__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__component__ = __webpack_require__(149);
+
+
+
+
+
+
+
+
+
+var PaperWaspComponentSelector = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_react_redux__["a" /* connect */])(function (state, _ref) {
+    var group = _ref.group;
+    return {
+        componentTypes: function () {
+            var componentRegistry = state.container.componentRegistry;
+            var componentMap = function componentMap(_ref2) {
+                var label = _ref2.label,
+                    thumbnailUrl = _ref2.thumbnailUrl,
+                    type = _ref2.type;
+                return { label: label, thumbnailUrl: thumbnailUrl, type: type };
+            };
+            return __WEBPACK_IMPORTED_MODULE_0_lodash_filter___default()(componentRegistry.filter('canAdd'), { group: group }).map(componentMap);
+        }(),
+        parent: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4_paper_wasp_editor_selectors__["b" /* getActiveComponentId */])(state)
+    };
+}, function (dispatch) {
+    return {
+        addComponent: function addComponent(parent, type, store) {
+            dispatch(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_paper_wasp_action_creators__["f" /* addComponent */])({ parent: parent, type: type }));
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5_paper_wasp_editor_functions__["d" /* editComponent */])(dispatch, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3_paper_wasp_selectors__["e" /* getLastAddedComponentId */])(store.getState()));
+        }
+    };
+})(__WEBPACK_IMPORTED_MODULE_6__component__["a" /* default */]);
+
 
 
 /***/ })

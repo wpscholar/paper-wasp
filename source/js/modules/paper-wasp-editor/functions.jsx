@@ -178,9 +178,10 @@ export function onDragEnd() {
  *
  * @param dispatch {Function} The dispatch function from the store.
  * @param uid {int} The ID of the parent to which children will be added.
+ * @param group {string} The type of items to show in the selector (e.g. component, tile, etc.)
  */
-export function renderComponentSelector(dispatch: Function, uid: number) {
+export function renderComponentSelector(dispatch: Function, uid: number, group: string = 'component') {
     dispatch(setActiveComponent(uid));
-    dispatch(setModalContent(<PaperWaspComponentSelector />));
+    dispatch(setModalContent(<PaperWaspComponentSelector group={group} />));
     dispatch(openModal());
 }

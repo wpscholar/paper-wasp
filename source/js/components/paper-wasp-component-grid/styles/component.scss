@@ -1,3 +1,27 @@
 .paper-wasp-grid {
 
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  & > * {
+    padding: 10px;
+  }
+
+  &__cols-2 {
+    > * {
+      width: calc(100% / 2);
+    }
+  }
+  &__cols-3 {
+    > * {
+      width: calc(100% / 3);
+    }
+  }
+  &__cols-4 {
+    > * {
+      width: calc(100% / 4);
+    }
+  }
 }

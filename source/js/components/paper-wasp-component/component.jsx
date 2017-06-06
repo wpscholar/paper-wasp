@@ -38,10 +38,12 @@ function PaperWaspComponent(
         classes.push('paper-wasp-component--empty');
     }
 
+    const group = 'component'; // TODO: Dynamically set component type from component registry (isComponent / isTile)
+
     return (
         <div
             className={classes.join(' ')}
-            data-pw-component-type="component"
+            data-pw-component-type={group}
             data-pw-uid={uid}
             draggable
             onDoubleClick={canEdit ? onEdit : null}
@@ -51,7 +53,7 @@ function PaperWaspComponent(
                 onClick={canEdit || canDelete ? onEdit : null}
                 title="Click to edit, drag to move"
                 type="button">
-                <span data-pw-drag-handle="component">&#x2630;</span> {label}
+                <span data-pw-drag-handle={group}>&#x2630;</span> {label}
             </button>
             <div
                 className="paper-wasp-component__children"

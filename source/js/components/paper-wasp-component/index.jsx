@@ -28,7 +28,10 @@ const PaperWaspComponent = connect(
     (dispatch, {uid}) => {
         return {
             onDragStart,
-            onEdit: () => editComponent(dispatch, uid),
+            onEdit: (e) => {
+                e.stopPropagation();
+                editComponent(dispatch, uid);
+            },
         };
     }
 )(Component);

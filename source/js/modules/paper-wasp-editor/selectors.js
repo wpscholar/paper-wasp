@@ -42,19 +42,6 @@ export const getActiveComponentLabel = createSelector(
 );
 
 /**
- * Get component options for the component selector
- *
- * @param container {Object}
- * @returns {Array}
- */
-export const getComponentOptions = createSelector(
-    [getContainer],
-    ({componentRegistry}: Container) => {
-        return componentRegistry.filter('canAdd').map(({label, thumbnailUrl, type}) => ({label, thumbnailUrl, type}));
-    }
-);
-
-/**
  * Get the component type object
  *
  * @param container {Container}

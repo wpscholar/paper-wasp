@@ -3191,10 +3191,13 @@ function onDragEnd() {
  *
  * @param dispatch {Function} The dispatch function from the store.
  * @param uid {int} The ID of the parent to which children will be added.
+ * @param group {string} The type of items to show in the selector (e.g. component, tile, etc.)
  */
 function renderComponentSelector(dispatch, uid) {
+    var group = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'component';
+
     dispatch(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_7__action_creators__["a" /* setActiveComponent */])(uid));
-    dispatch(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_7__action_creators__["b" /* setModalContent */])(React.createElement(__WEBPACK_IMPORTED_MODULE_3_paper_wasp_component_selector__["a" /* PaperWaspComponentSelector */], null)));
+    dispatch(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_7__action_creators__["b" /* setModalContent */])(React.createElement(__WEBPACK_IMPORTED_MODULE_3_paper_wasp_component_selector__["a" /* PaperWaspComponentSelector */], { group: group })));
     dispatch(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_7__action_creators__["c" /* openModal */])());
 }
 
@@ -3973,16 +3976,15 @@ if (typeof Object.create === 'function') {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return getActiveComponentId; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return getActiveComponent; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return getActiveComponentLabel; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return getComponentOptions; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return getActiveComponentId; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return getActiveComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return getActiveComponentLabel; });
 /* unused harmony export getComponentTypeObject */
 /* unused harmony export getCanAdd */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return getCanDelete; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return getCanEdit; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return getCanDelete; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return getCanEdit; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return getContext; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return getCurrentComponentLabel; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return getCurrentComponentLabel; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_reselect__ = __webpack_require__(67);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_reselect___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_reselect__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash_find__ = __webpack_require__(46);
@@ -4029,32 +4031,15 @@ var getActiveComponentLabel = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_
 });
 
 /**
- * Get component options for the component selector
- *
- * @param container {Object}
- * @returns {Array}
- */
-var getComponentOptions = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_reselect__["createSelector"])([__WEBPACK_IMPORTED_MODULE_2_paper_wasp_selectors__["b" /* getContainer */]], function (_ref3) {
-  var componentRegistry = _ref3.componentRegistry;
-
-  return componentRegistry.filter('canAdd').map(function (_ref4) {
-    var label = _ref4.label,
-        thumbnailUrl = _ref4.thumbnailUrl,
-        type = _ref4.type;
-    return { label: label, thumbnailUrl: thumbnailUrl, type: type };
-  });
-});
-
-/**
  * Get the component type object
  *
  * @param container {Container}
  * @param type {string}
  * @returns {string}
  */
-var getComponentTypeObject = function getComponentTypeObject(_ref5, _ref6) {
-  var container = _ref5.container;
-  var type = _ref6.type;
+var getComponentTypeObject = function getComponentTypeObject(_ref3, _ref4) {
+  var container = _ref3.container;
+  var type = _ref4.type;
   return container.componentRegistry.get(type);
 };
 
@@ -4064,8 +4049,8 @@ var getComponentTypeObject = function getComponentTypeObject(_ref5, _ref6) {
  * @param componentTypeObject {Object}
  * @returns {boolean}
  */
-var getCanAdd = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_reselect__["createSelector"])([getComponentTypeObject], function (_ref7) {
-  var canAdd = _ref7.canAdd;
+var getCanAdd = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_reselect__["createSelector"])([getComponentTypeObject], function (_ref5) {
+  var canAdd = _ref5.canAdd;
   return canAdd;
 });
 
@@ -4075,8 +4060,8 @@ var getCanAdd = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_reselect__["cr
  * @param componentTypeObject {Object}
  * @returns {boolean}
  */
-var getCanDelete = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_reselect__["createSelector"])([getComponentTypeObject], function (_ref8) {
-  var canDelete = _ref8.canDelete;
+var getCanDelete = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_reselect__["createSelector"])([getComponentTypeObject], function (_ref6) {
+  var canDelete = _ref6.canDelete;
   return canDelete;
 });
 
@@ -4086,8 +4071,8 @@ var getCanDelete = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_reselect__[
  * @param componentTypeObject {Object}
  * @returns {boolean}
  */
-var getCanEdit = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_reselect__["createSelector"])([getComponentTypeObject], function (_ref9) {
-  var canEdit = _ref9.canEdit;
+var getCanEdit = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_reselect__["createSelector"])([getComponentTypeObject], function (_ref7) {
+  var canEdit = _ref7.canEdit;
   return canEdit;
 });
 
@@ -4097,8 +4082,8 @@ var getCanEdit = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_reselect__["c
  * @param context {string}
  * @returns {string}
  */
-var getContext = function getContext(_ref10) {
-  var context = _ref10.context;
+var getContext = function getContext(_ref8) {
+  var context = _ref8.context;
   return context;
 };
 
@@ -4109,9 +4094,9 @@ var getContext = function getContext(_ref10) {
  * @param activeComponent {Component}
  * @returns {string}
  */
-var getCurrentComponentLabel = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_reselect__["createSelector"])([__WEBPACK_IMPORTED_MODULE_2_paper_wasp_selectors__["b" /* getContainer */], __WEBPACK_IMPORTED_MODULE_2_paper_wasp_selectors__["c" /* getCurrentComponent */]], function (_ref11, _ref12) {
-  var componentRegistry = _ref11.componentRegistry;
-  var type = _ref12.type;
+var getCurrentComponentLabel = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_reselect__["createSelector"])([__WEBPACK_IMPORTED_MODULE_2_paper_wasp_selectors__["b" /* getContainer */], __WEBPACK_IMPORTED_MODULE_2_paper_wasp_selectors__["c" /* getCurrentComponent */]], function (_ref9, _ref10) {
+  var componentRegistry = _ref9.componentRegistry;
+  var type = _ref10.type;
   return componentRegistry.getProperty(type, 'label');
 });
 
@@ -24859,7 +24844,7 @@ Stream.prototype.pipe = function(dest, options) {
  * @param data {Component}
  * @returns {Component|null}
  */
-var getComponentEditorChildren = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_reselect__["createSelector"])([__WEBPACK_IMPORTED_MODULE_1_paper_wasp_selectors__["b" /* getContainer */], __WEBPACK_IMPORTED_MODULE_2_paper_wasp_editor_selectors__["g" /* getActiveComponent */]], function (_ref, data) {
+var getComponentEditorChildren = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_reselect__["createSelector"])([__WEBPACK_IMPORTED_MODULE_1_paper_wasp_selectors__["b" /* getContainer */], __WEBPACK_IMPORTED_MODULE_2_paper_wasp_editor_selectors__["f" /* getActiveComponent */]], function (_ref, data) {
     var componentRegistry = _ref.componentRegistry;
     var type = data.type;
 
@@ -24907,35 +24892,8 @@ function hideComponentSelector() {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PaperWaspComponentSelector; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_redux__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_paper_wasp_action_creators__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_paper_wasp_selectors__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_paper_wasp_editor_selectors__ = __webpack_require__(34);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_paper_wasp_editor_functions__ = __webpack_require__(24);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__component__ = __webpack_require__(149);
-
-
-
-
-
-
-
-
-var PaperWaspComponentSelector = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_react_redux__["a" /* connect */])(function (state) {
-    return {
-        componentTypes: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3_paper_wasp_editor_selectors__["b" /* getComponentOptions */])(state),
-        parent: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3_paper_wasp_editor_selectors__["c" /* getActiveComponentId */])(state)
-    };
-}, function (dispatch) {
-    return {
-        addComponent: function addComponent(parent, type, store) {
-            dispatch(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_paper_wasp_action_creators__["f" /* addComponent */])({ parent: parent, type: type }));
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4_paper_wasp_editor_functions__["d" /* editComponent */])(dispatch, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_paper_wasp_selectors__["e" /* getLastAddedComponentId */])(store.getState()));
-        }
-    };
-})(__WEBPACK_IMPORTED_MODULE_5__component__["a" /* default */]);
-
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__container__ = __webpack_require__(412);
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__container__["a"]; });
 
 
 /***/ }),
@@ -25583,11 +25541,13 @@ function PaperWaspComponent(_ref) {
         classes.push('paper-wasp-component--empty');
     }
 
+    var group = 'component'; // TODO: Dynamically set component type from component registry (isComponent / isTile)
+
     return React.createElement(
         'div',
         {
             className: classes.join(' '),
-            'data-pw-component-type': 'component',
+            'data-pw-component-type': group,
             'data-pw-uid': uid,
             draggable: true,
             onDoubleClick: canEdit ? onEdit : null,
@@ -25601,7 +25561,7 @@ function PaperWaspComponent(_ref) {
                 type: 'button' },
             React.createElement(
                 'span',
-                { 'data-pw-drag-handle': 'component' },
+                { 'data-pw-drag-handle': group },
                 '\u2630'
             ),
             ' ',
@@ -25656,29 +25616,30 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var PaperWaspComponent = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_react_redux__["a" /* connect */])(function (state, props) {
     return {
-        canDelete: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5_paper_wasp_editor_selectors__["d" /* getCanDelete */])(state, props),
-        canEdit: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5_paper_wasp_editor_selectors__["e" /* getCanEdit */])(state, props),
+        canDelete: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5_paper_wasp_editor_selectors__["c" /* getCanDelete */])(state, props),
+        canEdit: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5_paper_wasp_editor_selectors__["d" /* getCanEdit */])(state, props),
         childComponents: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_paper_wasp_selectors__["d" /* getChildComponents */])(state, props),
-        label: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5_paper_wasp_editor_selectors__["f" /* getCurrentComponentLabel */])(state, props)
+        label: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5_paper_wasp_editor_selectors__["e" /* getCurrentComponentLabel */])(state, props)
     };
 }, function (dispatch, _ref) {
     var uid = _ref.uid;
 
     return {
         onDragStart: __WEBPACK_IMPORTED_MODULE_3_paper_wasp_editor_functions__["b" /* onDragStart */],
-        onEdit: function onEdit() {
-            return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3_paper_wasp_editor_functions__["d" /* editComponent */])(dispatch, uid);
+        onEdit: function onEdit(e) {
+            e.stopPropagation();
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3_paper_wasp_editor_functions__["d" /* editComponent */])(dispatch, uid);
         }
     };
 })(__WEBPACK_IMPORTED_MODULE_7__component__["a" /* default */]);
 
 var PaperWaspComponentEditor = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_react_redux__["a" /* connect */])(function (state) {
-    var component = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5_paper_wasp_editor_selectors__["g" /* getActiveComponent */])(state);
+    var component = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5_paper_wasp_editor_selectors__["f" /* getActiveComponent */])(state);
     return _extends({
-        label: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5_paper_wasp_editor_selectors__["h" /* getActiveComponentLabel */])(state)
+        label: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5_paper_wasp_editor_selectors__["g" /* getActiveComponentLabel */])(state)
     }, component, {
-        canDelete: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5_paper_wasp_editor_selectors__["d" /* getCanDelete */])(state, component),
-        canEdit: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5_paper_wasp_editor_selectors__["e" /* getCanEdit */])(state, component),
+        canDelete: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5_paper_wasp_editor_selectors__["c" /* getCanDelete */])(state, component),
+        canEdit: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5_paper_wasp_editor_selectors__["d" /* getCanEdit */])(state, component),
         children: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__selectors__["a" /* getComponentEditorChildren */])(state)
     });
 }, function (dispatch, _ref2) {
@@ -45752,9 +45713,8 @@ var components = [{
     canEdit: true,
     class: __WEBPACK_IMPORTED_MODULE_1_paper_wasp_component_column__["a" /* Column */],
     classEditor: __WEBPACK_IMPORTED_MODULE_1_paper_wasp_component_column__["b" /* ColumnEditor */],
-    isComponent: true,
+    group: 'component',
     isDynamic: false,
-    isSection: false,
     label: 'Column',
     type: 'column'
 }, {
@@ -45763,9 +45723,8 @@ var components = [{
     canEdit: true,
     class: __WEBPACK_IMPORTED_MODULE_2_paper_wasp_component_grid__["a" /* Grid */],
     classEditor: __WEBPACK_IMPORTED_MODULE_2_paper_wasp_component_grid__["b" /* GridEditor */],
-    isComponent: true,
+    group: 'component',
     isDynamic: false,
-    isSection: false,
     label: 'Grid',
     type: 'grid'
 }, {
@@ -45774,9 +45733,8 @@ var components = [{
     canEdit: true,
     class: __WEBPACK_IMPORTED_MODULE_3_paper_wasp_component_row__["a" /* Row */],
     classEditor: __WEBPACK_IMPORTED_MODULE_3_paper_wasp_component_row__["b" /* RowEditor */],
-    isComponent: false,
+    group: 'component',
     isDynamic: false,
-    isSection: false,
     label: 'Row',
     type: 'row'
 }, {
@@ -45785,9 +45743,8 @@ var components = [{
     canEdit: true,
     class: __WEBPACK_IMPORTED_MODULE_6_paper_wasp_component_text__["a" /* Text */],
     classEditor: __WEBPACK_IMPORTED_MODULE_6_paper_wasp_component_text__["b" /* TextEditor */],
-    isComponent: true,
+    group: 'component',
     isDynamic: false,
-    isSection: false,
     label: 'Text',
     thumbnailUrl: '/assets/img/text.png',
     type: 'text'
@@ -45797,9 +45754,8 @@ var components = [{
     canEdit: true,
     class: __WEBPACK_IMPORTED_MODULE_4_paper_wasp_component_image__["a" /* Image */],
     classEditor: __WEBPACK_IMPORTED_MODULE_4_paper_wasp_component_image__["b" /* ImageEditor */],
-    isComponent: true,
+    group: 'component',
     isDynamic: false,
-    isSection: false,
     label: 'Image',
     thumbnailUrl: '/assets/img/image.jpeg',
     type: 'image'
@@ -45809,9 +45765,8 @@ var components = [{
     canEdit: true,
     class: __WEBPACK_IMPORTED_MODULE_5_paper_wasp_component_image_tile__["a" /* ImageTile */],
     classEditor: __WEBPACK_IMPORTED_MODULE_5_paper_wasp_component_image_tile__["b" /* ImageTileEditor */],
-    isComponent: true,
+    group: 'tile',
     isDynamic: false,
-    isSection: false,
     label: 'Image Tile',
     thumbnailUrl: '/assets/img/image.jpeg',
     type: 'image-tile'
@@ -45821,9 +45776,8 @@ var components = [{
     canEdit: true,
     class: __WEBPACK_IMPORTED_MODULE_9_paper_wasp_component_rich_text__["a" /* RichText */],
     classEditor: __WEBPACK_IMPORTED_MODULE_9_paper_wasp_component_rich_text__["b" /* RichTextEditor */],
-    isComponent: true,
+    group: 'component',
     isDynamic: false,
-    isSection: false,
     label: 'Rich Text',
     thumbnailUrl: '/assets/img/rich-text.png',
     type: 'rich-text'
@@ -45833,9 +45787,8 @@ var components = [{
     canEdit: true,
     class: __WEBPACK_IMPORTED_MODULE_10_paper_wasp_component_heading__["a" /* Heading */],
     classEditor: __WEBPACK_IMPORTED_MODULE_10_paper_wasp_component_heading__["b" /* HeadingEditor */],
-    isComponent: true,
+    group: 'component',
     isDynamic: false,
-    isSection: false,
     label: 'Heading',
     thumbnailUrl: '/assets/img/heading.png',
     type: 'heading'
@@ -45845,9 +45798,8 @@ var components = [{
     canEdit: true,
     class: __WEBPACK_IMPORTED_MODULE_11_paper_wasp_component_button__["a" /* Button */],
     classEditor: __WEBPACK_IMPORTED_MODULE_11_paper_wasp_component_button__["b" /* ButtonEditor */],
-    isComponent: true,
+    group: 'component',
     isDynamic: false,
-    isSection: false,
     label: 'Button',
     thumbnailUrl: '/assets/img/button.png',
     type: 'button'
@@ -45857,9 +45809,8 @@ var components = [{
     canEdit: true,
     class: __WEBPACK_IMPORTED_MODULE_7_paper_wasp_component_pull_quote__["a" /* PullQuote */],
     classEditor: __WEBPACK_IMPORTED_MODULE_7_paper_wasp_component_pull_quote__["b" /* PullQuoteEditor */],
-    isComponent: true,
+    group: 'component',
     isDynamic: false,
-    isSection: false,
     label: 'Pull Quote',
     type: 'pull-quote'
 }, {
@@ -45868,9 +45819,8 @@ var components = [{
     canEdit: true,
     class: __WEBPACK_IMPORTED_MODULE_8_paper_wasp_component_quote__["a" /* Quote */],
     classEditor: __WEBPACK_IMPORTED_MODULE_8_paper_wasp_component_quote__["b" /* QuoteEditor */],
-    isComponent: true,
+    group: 'component',
     isDynamic: false,
-    isSection: false,
     label: 'Quote',
     type: 'quote'
 }, {
@@ -45879,9 +45829,8 @@ var components = [{
     canEdit: true,
     class: __WEBPACK_IMPORTED_MODULE_12_paper_wasp_component_video__["a" /* Video */],
     classEditor: __WEBPACK_IMPORTED_MODULE_12_paper_wasp_component_video__["b" /* VideoEditor */],
-    isComponent: true,
+    group: 'component',
     isDynamic: false,
-    isSection: false,
     label: 'Video',
     thumbnailUrl: '/assets/img/video.png',
     type: 'video'
@@ -45913,8 +45862,8 @@ components.forEach(function (component) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__container__ = __webpack_require__(411);
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__container__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__wrapper__ = __webpack_require__(415);
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__wrapper__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__component_editor__ = __webpack_require__(320);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_1__component_editor__["a"]; });
 
@@ -46693,17 +46642,56 @@ function Button(_ref) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GridEditor; });
-function _objectDestructuringEmpty(obj) { if (obj == null) throw new TypeError("Cannot destructure undefined"); }
+
 
 function GridEditor(_ref) {
-    _objectDestructuringEmpty(_ref.data);
-
-    var onChange = _ref.onChange;
+    var _ref$data$columns = _ref.data.columns,
+        columns = _ref$data$columns === undefined ? 4 : _ref$data$columns,
+        onChange = _ref.onChange;
 
     return React.createElement(
         "div",
         null,
-        "Render component here"
+        React.createElement(
+            "label",
+            { className: "paper-wasp-field" },
+            React.createElement(
+                "span",
+                null,
+                "Columns"
+            ),
+            React.createElement(
+                "select",
+                { onChange: function (_onChange) {
+                        function onChange(_x) {
+                            return _onChange.apply(this, arguments);
+                        }
+
+                        onChange.toString = function () {
+                            return _onChange.toString();
+                        };
+
+                        return onChange;
+                    }(function (e) {
+                        return onChange({ columns: e.target.value });
+                    }), value: columns },
+                React.createElement(
+                    "option",
+                    { value: 2 },
+                    "2"
+                ),
+                React.createElement(
+                    "option",
+                    { value: 3 },
+                    "3"
+                ),
+                React.createElement(
+                    "option",
+                    { value: 4 },
+                    "4"
+                )
+            )
+        )
     );
 }
 
@@ -46717,8 +46705,8 @@ function GridEditor(_ref) {
 function Grid(_ref) {
     var children = _ref.children,
         className = _ref.className,
-        _ref$data$columns = _ref.data.columns,
-        columns = _ref$data$columns === undefined ? 4 : _ref$data$columns,
+        _ref$columns = _ref.columns,
+        columns = _ref$columns === undefined ? 4 : _ref$columns,
         id = _ref.id;
 
 
@@ -50812,13 +50800,156 @@ function ImageTile(_ref) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Grid; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_redux__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_paper_wasp_component_decorator__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__component__ = __webpack_require__(321);
+
+
+
+
+
+var Grid = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_react_redux__["a" /* connect */])(function (state, _ref) {
+    var columns = _ref.data.columns;
+    return { columns: columns };
+})(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_paper_wasp_component_decorator__["a" /* ComponentDecorator */])(__WEBPACK_IMPORTED_MODULE_2__component__["a" /* default */]));
+
+
+
+/***/ }),
+/* 412 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PaperWaspComponentSelector; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash_filter__ = __webpack_require__(80);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash_filter___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_lodash_filter__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_redux__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_paper_wasp_action_creators__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_paper_wasp_selectors__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_paper_wasp_editor_selectors__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_paper_wasp_editor_functions__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__component__ = __webpack_require__(149);
+
+
+
+
+
+
+
+
+
+var PaperWaspComponentSelector = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_react_redux__["a" /* connect */])(function (state, _ref) {
+    var group = _ref.group;
+    return {
+        componentTypes: function () {
+            var componentRegistry = state.container.componentRegistry;
+            var componentMap = function componentMap(_ref2) {
+                var label = _ref2.label,
+                    thumbnailUrl = _ref2.thumbnailUrl,
+                    type = _ref2.type;
+                return { label: label, thumbnailUrl: thumbnailUrl, type: type };
+            };
+            return __WEBPACK_IMPORTED_MODULE_0_lodash_filter___default()(componentRegistry.filter('canAdd'), { group: group }).map(componentMap);
+        }(),
+        parent: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4_paper_wasp_editor_selectors__["b" /* getActiveComponentId */])(state)
+    };
+}, function (dispatch) {
+    return {
+        addComponent: function addComponent(parent, type, store) {
+            dispatch(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_paper_wasp_action_creators__["f" /* addComponent */])({ parent: parent, type: type }));
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5_paper_wasp_editor_functions__["d" /* editComponent */])(dispatch, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3_paper_wasp_selectors__["e" /* getLastAddedComponentId */])(store.getState()));
+        }
+    };
+})(__WEBPACK_IMPORTED_MODULE_6__component__["a" /* default */]);
+
+
+
+/***/ }),
+/* 413 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__container__ = __webpack_require__(411);
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+
+
+function GridEditMode(_ref) {
+    var onAdd = _ref.onAdd,
+        props = _objectWithoutProperties(_ref, ['onAdd']);
+
+    return React.createElement(
+        'div',
+        { className: 'paper-wasp-grid-edit-mode' },
+        React.createElement(__WEBPACK_IMPORTED_MODULE_0__container__["a" /* Grid */], props),
+        React.createElement(
+            'button',
+            {
+                className: 'paper-wasp-button-secondary paper-wasp-grid-edit-mode__action-add',
+                onClick: onAdd,
+                title: 'Click to add a new tile',
+                type: 'button' },
+            '+'
+        )
+    );
+}
+
+/* harmony default export */ __webpack_exports__["a"] = (GridEditMode);
+
+/***/ }),
+/* 414 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GridEditMode; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_paper_wasp_component_decorator__ = __webpack_require__(42);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__component__ = __webpack_require__(321);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_redux__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_paper_wasp_editor_functions__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__component_edit_mode__ = __webpack_require__(413);
 
 
 
 
-var Grid = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_paper_wasp_component_decorator__["a" /* ComponentDecorator */])(__WEBPACK_IMPORTED_MODULE_1__component__["a" /* default */]);
+
+
+var GridEditMode = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_react_redux__["a" /* connect */])(null, function (dispatch, _ref) {
+    var uid = _ref.uid;
+    return {
+        onAdd: function onAdd() {
+            return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_paper_wasp_editor_functions__["e" /* renderComponentSelector */])(dispatch, uid, 'tile');
+        },
+        onDragOver: __WEBPACK_IMPORTED_MODULE_2_paper_wasp_editor_functions__["a" /* onDragOver */],
+        onDragStart: __WEBPACK_IMPORTED_MODULE_2_paper_wasp_editor_functions__["b" /* onDragStart */],
+        onDrop: function onDrop(e) {
+            return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_paper_wasp_editor_functions__["c" /* onDrop */])(e, dispatch);
+        },
+        onMenuClick: function onMenuClick() {
+            return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_paper_wasp_editor_functions__["d" /* editComponent */])(dispatch, uid);
+        }
+    };
+})(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_paper_wasp_component_decorator__["a" /* ComponentDecorator */])(__WEBPACK_IMPORTED_MODULE_3__component_edit_mode__["a" /* default */]));
+
+
+
+/***/ }),
+/* 415 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GridWrapper; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__container__ = __webpack_require__(411);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__container_edit_mode__ = __webpack_require__(414);
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+
+
+
+function GridWrapper(_ref) {
+    var context = _ref.context,
+        props = _objectWithoutProperties(_ref, ['context']);
+
+    return context === 'view' ? React.createElement(__WEBPACK_IMPORTED_MODULE_0__container__["a" /* Grid */], props) : React.createElement(__WEBPACK_IMPORTED_MODULE_1__container_edit_mode__["a" /* GridEditMode */], props);
+}
 
 
 

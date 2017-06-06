@@ -2,15 +2,22 @@
 
 type Props = {
     data: {
-
+        columns: number
     },
     onChange: Function
 };
 
-function GridEditor({data: {}, onChange}: Props) {
+function GridEditor({data: {columns = 4}, onChange}: Props) {
     return (
         <div>
-            Render component here
+            <label className="paper-wasp-field">
+                <span>Columns</span>
+                <select onChange={e => onChange({columns: e.target.value})} value={columns}>
+                    <option value={2}>2</option>
+                    <option value={3}>3</option>
+                    <option value={4}>4</option>
+                </select>
+            </label>
         </div>
     );
 }

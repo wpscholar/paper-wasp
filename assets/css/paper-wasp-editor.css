@@ -66,6 +66,10 @@
 
 .paper-wasp-editor .paper-wasp-column--empty .paper-wasp-column__content:hover { border-color: #6ec1e4; }
 
+.paper-wasp-grid-edit-mode__action-add { width: 100%; pointer-events: all !important; }
+
+.paper-wasp-grid .paper-wasp-component__title { top: 0; height: 30px; border-radius: 0 0 6px 6px; }
+
 .paper-wasp-component-editor .mce-tinymce button:hover { background-color: inherit; }
 
 .tiny-image-editor div > div > button { background-color: #ADD8E6; padding: 5px; margin-left: 20px; margin-top: 5px; }
@@ -169,6 +173,16 @@
 .paper-wasp-button--extra-large { padding: 1.25em 1.5em; font-size: 1.5em; }
 
 .paper-wasp-column { -webkit-box-flex: 1; -ms-flex-positive: 1; flex-grow: 1; -ms-flex-negative: 1; flex-shrink: 1; -ms-flex-preferred-size: 100%; flex-basis: 100%; margin: 10px; }
+
+.paper-wasp-grid { display: -webkit-box; display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; -webkit-box-align: start; -ms-flex-align: start; align-items: flex-start; -webkit-box-pack: start; -ms-flex-pack: start; justify-content: flex-start; }
+
+.paper-wasp-grid > * { padding: 10px; }
+
+.paper-wasp-grid__cols-2 > * { width: calc(100% / 2); }
+
+.paper-wasp-grid__cols-3 > * { width: calc(100% / 3); }
+
+.paper-wasp-grid__cols-4 > * { width: calc(100% / 4); }
 
 .paper-wasp-heading--center { text-align: center; }
 
