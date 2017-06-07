@@ -35,5 +35,6 @@ require dirname( __FILE__ ) . '/includes/functions.php';
 require dirname( __FILE__ ) . '/includes/actions.php';
 require dirname( __FILE__ ) . '/includes/filters.php';
 require dirname( __FILE__ ) . '/includes/PaperWaspUtilities.php';
+require dirname( __FILE__ ) . '/includes/PaperWaspAdmin.php';
 require dirname( __FILE__ ) . '/includes/PaperWasp.php';
-PaperWasp::initialize();
+PaperWaspAdmin::initialize();

@@ -27,7 +27,11 @@ function PaperWaspEditor(
         <div className="paper-wasp-editor" onDrag={drag} onDragEnd={dragEnd}>
             {context === 'view' ? <Page {...props} /> : <PageEditMode {...props} />}
             <div className="paper-wasp-editor__add">
-                <button className="paper-wasp-button-primary" onClick={() => addSection(props.uid)}>Add Section</button>
+                <button
+                    className="paper-wasp-button-primary"
+                    onClick={() => addSection(props.uid)}
+                    type="button">Add Section
+                </button>
                 {/*<button className="paper-wasp-button-secondary" onClick={() => addTemplate(props.uid)}>Add Template</button>*/}
             </div>
         </div>

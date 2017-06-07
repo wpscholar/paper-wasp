@@ -37,10 +37,10 @@
   // State: Hover
   &:hover {
     border-color: $component-highlight;
-    .paper-wasp-component__title {
+    > .paper-wasp-component__title {
       display: block;
     }
-    .paper-wasp-component__actions {
+    > .paper-wasp-component__actions {
       display: block;
     }
   }

@@ -208,3 +208,5 @@ class PaperWasp {
 	}
 
 }
+
+PaperWasp::initialize();

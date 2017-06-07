@@ -37991,9 +37991,12 @@ function PaperWaspEditor(_ref) {
             { className: 'paper-wasp-editor__add' },
             React.createElement(
                 'button',
-                { className: 'paper-wasp-button-primary', onClick: function onClick() {
+                {
+                    className: 'paper-wasp-button-primary',
+                    onClick: function onClick() {
                         return addSection(props.uid);
-                    } },
+                    },
+                    type: 'button' },
                 'Add Section'
             )
         )
