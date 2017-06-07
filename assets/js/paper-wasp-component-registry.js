@@ -48299,11 +48299,6 @@ var RichText = function (_Component) {
                 React.createElement(
                     'label',
                     { className: 'paper-wasp-field' },
-                    React.createElement(
-                        'span',
-                        null,
-                        'Rich Text'
-                    ),
                     React.createElement(__WEBPACK_IMPORTED_MODULE_2_react_tinymce_input___default.a, {
                         onChange: onTextChange,
                         tinymceConfig: TINYMCE_CONFIG,
