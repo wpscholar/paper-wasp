@@ -38,6 +38,7 @@ class PaperWasp {
 		add_action( 'add_meta_boxes', array( __CLASS__, 'addMetaBoxes' ), 10, 2 );
 		add_action( 'save_post', array( __CLASS__, 'savePost' ), 10, 2 );
 		add_action( 'template_redirect', array( __CLASS__, 'loadEditor' ) );
+		add_action( 'admin_enqueue_scripts', array( __CLASS__, 'loadStyles' ) );
 		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'loadStyles' ) );
 
 		add_action( 'page_row_actions', array( __CLASS__, 'addRowAction' ), 10, 2 );
@@ -202,8 +203,11 @@ class PaperWasp {
 	 * Load the Paper Wasp styles on the front end
 	 */
 	public static function loadStyles() {
+
+		wp_register_style( 'paper-wasp', plugins_url( '/assets/css/paper-wasp.css', PAPER_WASP_FILE ) );
+
 		if ( ! is_admin() && is_paper_wasp_enabled() && ! isset( $_GET['paper-wasp'] ) ) {
-			wp_enqueue_style( 'paper-wasp', plugins_url( '/assets/css/paper-wasp.css', PAPER_WASP_FILE ) );
+			wp_enqueue_style( 'paper-wasp' );
 		}
 	}
 
