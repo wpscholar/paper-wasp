@@ -38,6 +38,17 @@ class Registry {
         this.registry[name] = value;
     }
 
+    /**
+     * Remove an item from the registry.
+     *
+     * @param name
+     */
+    remove(name: string) {
+        if (this.has(name)) {
+            delete this.registry[name];
+        }
+    }
+
 }
 
 export default Registry;
