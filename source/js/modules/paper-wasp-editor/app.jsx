@@ -6,6 +6,8 @@ import {createLogger} from 'redux-logger';
 import promise from 'redux-promise';
 import modal from 'modal/reducer';
 import {components as componentsReducer} from 'paper-wasp/reducers';
+import defaultChildren from 'paper-wasp-default-children-middleware';
+import defaultData from 'paper-wasp-default-data-middleware';
 
 import {activeComponent, context} from './reducers';
 import PaperWaspActionBar from './components/action-bar';
@@ -45,7 +47,13 @@ class App {
 
     render(el: Object) {
 
-        const middleware = [promise];
+        const {componentRegistry} = this.initialState.container;
+
+        const middleware = [
+            defaultData(componentRegistry),
+            defaultChildren(componentRegistry),
+            promise
+        ];
 
         if (process.env.NODE_ENV !== 'production') {
             middleware.push(createLogger({collapsed: () => true}));
