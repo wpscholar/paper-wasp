@@ -27,10 +27,10 @@ export function addComponent(
 ): ComponentCollection {
     const defaults = {
         data: {},
-        uid: Date.now(),
         index: getNextIndex(state, action.parent),
         parent: 0,
-        type: componentType
+        type: componentType,
+        uid: Date.now()
     };
     return [...state, Object.assign(defaults, action)];
 }
@@ -165,8 +165,8 @@ export function insertComponents(
                 if (component) {
                     uniqueId += 1;
                     const action = Object.assign({}, component, {
-                        uid: uniqueId,
-                        parent: parent || component.parent
+                        parent: parent || component.parent || 0,
+                        uid: uniqueId
                     });
                     if (parent === 0) {
                         action.index = getNextIndex(state, component.parent);
