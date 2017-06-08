@@ -5,18 +5,12 @@ import type {ReactChildren} from 'react-flow-types';
 type Props = {
     children: ReactChildren,
     className: string,
-    data: Object,
-    dispatch: Function,
-    id: string,
-    uid: number,
-    index: number,
-    parent: number,
-    type: string
+    id: string
 }
 
-function Row({children, className, data, dispatch, uid, index, parent, type, ...props}: Props) {
+function Row({children, className, id}: Props) {
     return (
-        <div {...props} className={['paper-wasp-row', className].join(' ').trim()}>
+        <div className={['paper-wasp-row', className].join(' ').trim()} id={id}>
             {children}
         </div>
     );

@@ -58,6 +58,13 @@
 
     }
 
+    // Hide UI if not draggable or editable
+    &[draggable="false"][data-pw-can-edit="false"] {
+      &:before, &:after {
+        display: none;
+      }
+    }
+
   }
 
 }
