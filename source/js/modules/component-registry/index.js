@@ -27,6 +27,18 @@ class ComponentRegistry extends Registry {
         return find(this.registry, predicate);
     }
 
+
+    hasProperty(name: string, property: string) {
+        let propertyExists = false;
+        if (this.has(name)) {
+            const object = this.get(name);
+            if (Object.prototype.hasOwnProperty.call(object, property)) {
+                propertyExists = true;
+            }
+        }
+        return propertyExists;
+    }
+
     /**
      * Helper function to easily fetch a property value for a specific component type
      *
