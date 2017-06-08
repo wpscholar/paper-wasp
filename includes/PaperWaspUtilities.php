@@ -103,6 +103,37 @@ class PaperWaspUtilities {
 			$cleanComponent->style = $style;
 		}
 
+		// Capabilities
+		$canAdd = self::getValue( $component, 'canAdd' );
+		if ( ! is_null( $canAdd ) ) {
+			$cleanComponent->canAdd = filter_var( $canAdd, FILTER_VALIDATE_BOOLEAN );
+		}
+
+		$canAppend = self::getValue( $component, 'canAppend' );
+		if ( ! is_null( $canAppend ) ) {
+			$cleanComponent->canAppend = filter_var( $canAppend, FILTER_VALIDATE_BOOLEAN );
+		}
+
+		$canDelete = self::getValue( $component, 'canDelete' );
+		if ( ! is_null( $canDelete ) ) {
+			$cleanComponent->canDelete = filter_var( $canDelete, FILTER_VALIDATE_BOOLEAN );
+		}
+
+		$canDrag = self::getValue( $component, 'canDrag' );
+		if ( ! is_null( $canDrag ) ) {
+			$cleanComponent->canDrag = filter_var( $canDrag, FILTER_VALIDATE_BOOLEAN );
+		}
+
+		$canDrop = self::getValue( $component, 'canDrop' );
+		if ( ! is_null( $canDrag ) ) {
+			$cleanComponent->canDrop = filter_var( $canDrop, FILTER_VALIDATE_BOOLEAN );
+		}
+
+		$canEdit = self::getValue( $component, 'canEdit' );
+		if ( ! is_null( $canEdit ) ) {
+			$cleanComponent->canEdit = filter_var( $canEdit, FILTER_VALIDATE_BOOLEAN );
+		}
+
 		return $cleanComponent;
 	}
 
