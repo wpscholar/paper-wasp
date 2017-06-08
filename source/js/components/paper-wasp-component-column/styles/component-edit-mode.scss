@@ -128,6 +128,20 @@
       }
     }
 
+    // Hide UI if not draggable or editable
+    &[draggable="false"][data-pw-can-edit="false"] {
+      &:before {
+        display: none;
+      }
+    }
+
+    // Hide UI if not able to append items
+    &[data-pw-can-append="false"] {
+      &:after {
+        display: none;
+      }
+    }
+
   }
 
 }

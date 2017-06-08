@@ -1,6 +1,7 @@
 // @flow
 import {connect} from 'react-redux';
 import {editComponent, onDragOver, onDragStart, onDrop, renderComponentSelector} from 'paper-wasp-editor/functions';
+import {getCanDrag, getCanDrop, getCanEdit} from 'paper-wasp-editor/selectors';
 import {ComponentDecorator} from 'paper-wasp-component/decorator';
 
 import Component from './component';
@@ -10,7 +11,11 @@ import EditMode from './component-edit-mode';
 const Column = ComponentDecorator(Component);
 
 const ColumnEditMode = connect(
-    null,
+    (state, props) => ({
+        canDrag: getCanDrag(state, props),
+        canDrop: getCanDrop(state, props),
+        canEdit: getCanEdit(state, props)
+    }),
     (dispatch, {uid}) => ({
         onAdd: () => renderComponentSelector(dispatch, uid),
         onDragOver,
