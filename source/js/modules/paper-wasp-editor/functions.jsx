@@ -102,8 +102,8 @@ export function onDragOver(e: Object) {
     if (dropTarget) {
         e.preventDefault(); // Prevent default allows a drop in this case
         e.dataTransfer.dropEffect = 'copy';
-        const hoverEl = document.elementFromPoint(e.clientX, e.clientY).closest(`[data-pw-component-type="${type}"]`);
-        if (hoverEl) {
+        const hoverEl = window.document.elementFromPoint(e.clientX, e.clientY).closest(`[data-pw-component-type="${type}"]`);
+        if (hoverEl && hoverEl.parentNode === dropTarget) {
             // If we are hovering over the component we are dragging
             if (hoverEl.getAttribute('data-pw-uid') === el.getAttribute('data-pw-uid')) {
                 el.style.display = 'none';
