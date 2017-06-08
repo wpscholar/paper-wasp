@@ -10,7 +10,8 @@ import {
     getActiveComponentLabel,
     getCurrentComponentLabel,
     getCanEdit,
-    getCanDelete
+    getCanDelete,
+    getCanDrag
 } from 'paper-wasp-editor/selectors';
 
 import {getComponentEditorChildren} from './selectors';
@@ -21,6 +22,7 @@ import ComponentEditor from './component-editor';
 const PaperWaspComponent = connect(
     (state, props) => ({
         canDelete: getCanDelete(state, props),
+        canDrag: getCanDrag(state, props),
         canEdit: getCanEdit(state, props),
         childComponents: getChildComponents(state, props),
         label: getCurrentComponentLabel(state, props)

@@ -4,6 +4,7 @@ import type {ReactChildren} from 'react-flow-types';
 
 type Props = {
     canDelete: boolean,
+    canDrag: boolean,
     canEdit: boolean,
     childComponents: Array<*>,
     children: ReactChildren,
@@ -17,6 +18,7 @@ type Props = {
 function PaperWaspComponent(
     {
         canDelete,
+        canDrag,
         canEdit,
         childComponents = [],
         children,
@@ -45,7 +47,7 @@ function PaperWaspComponent(
             className={classes.join(' ')}
             data-pw-component-type={group}
             data-pw-uid={uid}
-            draggable
+            draggable={canDrag}
             onDoubleClick={canEdit ? onEdit : null}
             onDragStart={onDragStart}>
             <button
@@ -53,7 +55,7 @@ function PaperWaspComponent(
                 onClick={canEdit || canDelete ? onEdit : null}
                 title="Click to edit, drag to move"
                 type="button">
-                <span data-pw-drag-handle={group}>&#x2630;</span> {label}
+                {canDrag ? <span data-pw-drag-handle={group}>&#x2630;</span> : null} {label}
             </button>
             <div
                 className="paper-wasp-component__children"
