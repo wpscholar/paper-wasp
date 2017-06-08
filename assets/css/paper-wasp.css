@@ -16,6 +16,8 @@
 
 .paper-wasp-column { -webkit-box-flex: 1; -ms-flex-positive: 1; flex-grow: 1; -ms-flex-negative: 1; flex-shrink: 1; -ms-flex-preferred-size: 100%; flex-basis: 100%; margin: 10px; }
 
+.paper-wasp-column.paper-wasp-collapse { margin: 0; }
+
 .paper-wasp-grid { display: -webkit-box; display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; -webkit-box-align: start; -ms-flex-align: start; align-items: flex-start; -webkit-box-pack: start; -ms-flex-pack: start; justify-content: flex-start; }
 
 .paper-wasp-grid > * { padding: 10px; }
@@ -43,6 +45,8 @@
 .paper-wasp-rich-text:after { content: ""; display: table; clear: both; }
 
 .paper-wasp-row { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; -ms-flex-line-pack: start; align-content: flex-start; padding: 40px 0; }
+
+.paper-wasp-row.paper-wasp-collapse { padding: 0; }
 
 .paper-wasp-text--center { text-align: center; }
 

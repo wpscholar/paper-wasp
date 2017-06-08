@@ -66,6 +66,10 @@
 
 .paper-wasp-editor .paper-wasp-column--empty .paper-wasp-column__content:hover { border-color: #6ec1e4; }
 
+.paper-wasp-editor .paper-wasp-column[draggable="false"][data-pw-can-edit="false"]:before { display: none; }
+
+.paper-wasp-editor .paper-wasp-column[data-pw-can-append="false"]:after { display: none; }
+
 .paper-wasp-grid-edit-mode__action-add { width: 100%; pointer-events: all !important; }
 
 .paper-wasp-grid .paper-wasp-component__title { top: 0; height: 30px; border-radius: 0 0 6px 6px; }
@@ -89,6 +93,8 @@
 .paper-wasp-editor .paper-wasp-row-wrap:hover:before, .paper-wasp-editor .paper-wasp-row-wrap:hover:after { height: 50%; border-left-color: #6ec1e4; -webkit-transition: height 0.3s ease-out 0.5s; transition: height 0.3s ease-out 0.5s; z-index: 1; }
 
 .paper-wasp-editor .paper-wasp-row-wrap:hover .paper-wasp-row__action-menu { display: block; }
+
+.paper-wasp-editor .paper-wasp-row-wrap[draggable="false"][data-pw-can-edit="false"]:before, .paper-wasp-editor .paper-wasp-row-wrap[draggable="false"][data-pw-can-edit="false"]:after { display: none; }
 
 .paper-wasp-video iframe { pointer-events: none; }
 
@@ -174,6 +180,8 @@
 
 .paper-wasp-column { -webkit-box-flex: 1; -ms-flex-positive: 1; flex-grow: 1; -ms-flex-negative: 1; flex-shrink: 1; -ms-flex-preferred-size: 100%; flex-basis: 100%; margin: 10px; }
 
+.paper-wasp-column.paper-wasp-collapse { margin: 0; }
+
 .paper-wasp-grid { display: -webkit-box; display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; -webkit-box-align: start; -ms-flex-align: start; align-items: flex-start; -webkit-box-pack: start; -ms-flex-pack: start; justify-content: flex-start; }
 
 .paper-wasp-grid > * { padding: 10px; }
@@ -202,6 +210,8 @@
 
 .paper-wasp-row { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; -ms-flex-line-pack: start; align-content: flex-start; padding: 40px 0; }
 
+.paper-wasp-row.paper-wasp-collapse { padding: 0; }
+
 .paper-wasp-text--center { text-align: center; }
 
 .paper-wasp-text--right { text-align: right; }
@@ -225,6 +235,8 @@
 .paper-wasp-field { display: block; margin: 1em 0; }
 
 .paper-wasp-field input { padding: .5em; width: 100%; font-size: 16px; }
+
+.paper-wasp-field input[type="checkbox"], .paper-wasp-field input[type="radio"] { width: auto; }
 
 .paper-wasp-field select { display: block; width: 100%; font-family: sans-serif; font-size: 16px; line-height: 1.15; text-transform: none; }
 
