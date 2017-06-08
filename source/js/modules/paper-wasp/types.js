@@ -1,9 +1,13 @@
 export type Component = {
-    uid: number,
+    canAdd: boolean,
+    canDrag: boolean,
+    canDelete: boolean,
+    canEdit: boolean,
     type: string,
     parent: number,
     index: number,
     data: Object,
+    uid: number,
 };
 
 export type ComponentCollection = Array<Component>;
