@@ -64,16 +64,16 @@ class ComponentEditor extends Component {
 
                 <div className="paper-wasp-modal__title">{label}</div>
 
-                <Menu onClick={onScreenChange} screen={screen} />
+                {canEdit ? <Menu onClick={onScreenChange} screen={screen} /> : null }
 
-                {screen === 'advanced' ? (
+                {canEdit && screen === 'advanced' ? (
                     <AdvancedScreen
                         className={className}
                         id={id}
                         onChange={onChange} />
                 ) : null}
 
-                {screen === 'edit' ? (
+                {canEdit && screen === 'edit' ? (
                     <EditScreen
                         canDelete={canDelete}
                         canEdit={canEdit}

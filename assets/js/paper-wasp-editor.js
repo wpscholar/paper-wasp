@@ -2785,7 +2785,7 @@ function editComponent(dispatch, uid) {
 function onDragStart(e) {
     // Don't trigger multiple events for a single drag.
     e.stopPropagation();
-    var el = document.elementFromPoint(e.clientX, e.clientY);
+    var el = window.document.elementFromPoint(e.clientX, e.clientY);
     if (el.hasAttribute('data-pw-drag-handle')) {
         // The clicked element is a handle, so allow the drag
         window.paperWasp.dragAndDrop = {
@@ -3207,8 +3207,8 @@ module.exports = React;
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return getActiveComponentId; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return getActiveComponent; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return getActiveComponentLabel; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return getActiveComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return getActiveComponentLabel; });
 /* unused harmony export getComponentTypeObject */
 /* unused harmony export getCanAdd */
 /* unused harmony export getCanAppendComponent */
@@ -3216,7 +3216,7 @@ module.exports = React;
 /* unused harmony export getCanAppend */
 /* unused harmony export getCanDeleteComponent */
 /* unused harmony export getCanDeleteComponentType */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return getCanDelete; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return getCanDelete; });
 /* unused harmony export getCanDragComponent */
 /* unused harmony export getCanDragComponentType */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return getCanDrag; });
@@ -3224,10 +3224,10 @@ module.exports = React;
 /* unused harmony export getCanDropComponentType */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return getCanDrop; });
 /* unused harmony export getCanEditComponent */
-/* unused harmony export getCanEditComponentType */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return getCanEdit; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return getCanEditComponentType; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return getCanEdit; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return getContext; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return getCurrentComponentLabel; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return getCurrentComponentLabel; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_reselect__ = __webpack_require__(68);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_reselect___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_reselect__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash_find__ = __webpack_require__(47);
@@ -21749,7 +21749,7 @@ var ColumnEditMode = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_react_red
     return {
         canDrag: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_paper_wasp_editor_selectors__["b" /* getCanDrag */])(state, props),
         canDrop: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_paper_wasp_editor_selectors__["c" /* getCanDrop */])(state, props),
-        canEdit: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_paper_wasp_editor_selectors__["f" /* getCanEdit */])(state, props)
+        canEdit: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_paper_wasp_editor_selectors__["g" /* getCanEdit */])(state, props)
     };
 }, function (dispatch, _ref) {
     var uid = _ref.uid;
@@ -22466,7 +22466,7 @@ if ("development" !== 'production' && typeof isCrushed.name === 'string' && isCr
  * @param data {Component}
  * @returns {Component|null}
  */
-var getComponentEditorChildren = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_reselect__["createSelector"])([__WEBPACK_IMPORTED_MODULE_1_paper_wasp_selectors__["b" /* getContainer */], __WEBPACK_IMPORTED_MODULE_2_paper_wasp_editor_selectors__["h" /* getActiveComponent */]], function (_ref, data) {
+var getComponentEditorChildren = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_reselect__["createSelector"])([__WEBPACK_IMPORTED_MODULE_1_paper_wasp_selectors__["b" /* getContainer */], __WEBPACK_IMPORTED_MODULE_2_paper_wasp_editor_selectors__["i" /* getActiveComponent */]], function (_ref, data) {
     var componentRegistry = _ref.componentRegistry;
     var type = data.type;
 
@@ -23093,12 +23093,12 @@ var ComponentEditor = function (_Component) {
                     { className: 'paper-wasp-modal__title' },
                     label
                 ),
-                React.createElement(__WEBPACK_IMPORTED_MODULE_3__screens_menu__["a" /* default */], { onClick: onScreenChange, screen: screen }),
-                screen === 'advanced' ? React.createElement(__WEBPACK_IMPORTED_MODULE_1__screens_advanced__["a" /* default */], {
+                canEdit ? React.createElement(__WEBPACK_IMPORTED_MODULE_3__screens_menu__["a" /* default */], { onClick: onScreenChange, screen: screen }) : null,
+                canEdit && screen === 'advanced' ? React.createElement(__WEBPACK_IMPORTED_MODULE_1__screens_advanced__["a" /* default */], {
                     className: className,
                     id: id,
                     onChange: onChange }) : null,
-                screen === 'edit' ? React.createElement(__WEBPACK_IMPORTED_MODULE_2__screens_edit__["a" /* default */], {
+                canEdit && screen === 'edit' ? React.createElement(__WEBPACK_IMPORTED_MODULE_2__screens_edit__["a" /* default */], {
                     canDelete: canDelete,
                     canEdit: canEdit,
                     children: children // eslint-disable-line react/no-children-prop
@@ -23252,11 +23252,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var PaperWaspComponent = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_react_redux__["a" /* connect */])(function (state, props) {
     return {
-        canDelete: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5_paper_wasp_editor_selectors__["e" /* getCanDelete */])(state, props),
+        canDelete: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5_paper_wasp_editor_selectors__["f" /* getCanDelete */])(state, props),
         canDrag: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5_paper_wasp_editor_selectors__["b" /* getCanDrag */])(state, props),
-        canEdit: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5_paper_wasp_editor_selectors__["f" /* getCanEdit */])(state, props),
+        canEdit: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5_paper_wasp_editor_selectors__["g" /* getCanEdit */])(state, props),
         childComponents: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_paper_wasp_selectors__["d" /* getChildComponents */])(state, props),
-        label: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5_paper_wasp_editor_selectors__["g" /* getCurrentComponentLabel */])(state, props)
+        label: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5_paper_wasp_editor_selectors__["h" /* getCurrentComponentLabel */])(state, props)
     };
 }, function (dispatch, _ref) {
     var uid = _ref.uid;
@@ -23271,12 +23271,12 @@ var PaperWaspComponent = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_react
 })(__WEBPACK_IMPORTED_MODULE_7__component__["a" /* default */]);
 
 var PaperWaspComponentEditor = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_react_redux__["a" /* connect */])(function (state) {
-    var component = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5_paper_wasp_editor_selectors__["h" /* getActiveComponent */])(state);
+    var component = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5_paper_wasp_editor_selectors__["i" /* getActiveComponent */])(state);
     return _extends({
-        label: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5_paper_wasp_editor_selectors__["i" /* getActiveComponentLabel */])(state)
+        label: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5_paper_wasp_editor_selectors__["j" /* getActiveComponentLabel */])(state)
     }, component, {
-        canDelete: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5_paper_wasp_editor_selectors__["e" /* getCanDelete */])(state, component),
-        canEdit: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5_paper_wasp_editor_selectors__["f" /* getCanEdit */])(state, component),
+        canDelete: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5_paper_wasp_editor_selectors__["f" /* getCanDelete */])(state, component),
+        canEdit: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5_paper_wasp_editor_selectors__["g" /* getCanEdit */])(state, component),
         children: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__selectors__["a" /* getComponentEditorChildren */])(state)
     });
 }, function (dispatch, _ref2) {
@@ -23636,15 +23636,12 @@ var PaperWaspComponentSelector = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE
 }, function (dispatch) {
     return {
         addComponent: function addComponent(parent, type, store) {
-            // Explicity set the uid, so we know what it is
+            // Explicitly set the uid, so we know what it is
             var uid = Date.now();
             // Add the component
             dispatch(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_paper_wasp_action_creators__["f" /* addComponent */])({ parent: parent, type: type, uid: uid }));
-            // Get the component registry
-            var componentRegistry = store.getState().container.componentRegistry;
-            // Determine if the component we are adding has an editor
-
-            if (componentRegistry.hasProperty(type, 'editorClass')) {
+            // Determine if the component we are adding is editable
+            if (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3_paper_wasp_editor_selectors__["e" /* getCanEditComponentType */])(store.getState(), { type: type })) {
                 // If so, load the editor
                 __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4_paper_wasp_editor_functions__["d" /* editComponent */])(dispatch, uid);
             } else {

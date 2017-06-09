@@ -64,7 +64,7 @@ export function editComponent(dispatch: Function, uid: number) {
 export function onDragStart(e: Object) {
     // Don't trigger multiple events for a single drag.
     e.stopPropagation();
-    const el = document.elementFromPoint(e.clientX, e.clientY);
+    const el = window.document.elementFromPoint(e.clientX, e.clientY);
     if (el.hasAttribute('data-pw-drag-handle')) {
         // The clicked element is a handle, so allow the drag
         window.paperWasp.dragAndDrop = {
