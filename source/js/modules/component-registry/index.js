@@ -28,6 +28,13 @@ class ComponentRegistry extends Registry {
     }
 
 
+    /**
+     * Helper function to check if a property exists for a specific component type
+     *
+     * @param {string} name
+     * @param {string} property
+     * @returns {boolean}
+     */
     hasProperty(name: string, property: string) {
         let propertyExists = false;
         if (this.has(name)) {

@@ -46398,6 +46398,15 @@ var ComponentRegistry = function (_Registry) {
         value: function find(predicate) {
             return __WEBPACK_IMPORTED_MODULE_3_lodash_find___default()(this.registry, predicate);
         }
+
+        /**
+         * Helper function to check if a property exists for a specific component type
+         *
+         * @param {string} name
+         * @param {string} property
+         * @returns {boolean}
+         */
+
     }, {
         key: 'hasProperty',
         value: function hasProperty(name, property) {
