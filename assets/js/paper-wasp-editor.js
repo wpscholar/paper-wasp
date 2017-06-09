@@ -3213,7 +3213,7 @@ module.exports = React;
 /* unused harmony export getCanAdd */
 /* unused harmony export getCanAppendComponent */
 /* unused harmony export getCanAppendComponentType */
-/* unused harmony export getCanAppend */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "k", function() { return getCanAppend; });
 /* unused harmony export getCanDeleteComponent */
 /* unused harmony export getCanDeleteComponentType */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return getCanDelete; });
@@ -21747,6 +21747,7 @@ var Column = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3_paper_wasp_compon
 
 var ColumnEditMode = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_react_redux__["a" /* connect */])(function (state, props) {
     return {
+        canAppend: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_paper_wasp_editor_selectors__["k" /* getCanAppend */])(state, props),
         canDrag: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_paper_wasp_editor_selectors__["b" /* getCanDrag */])(state, props),
         canDrop: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_paper_wasp_editor_selectors__["c" /* getCanDrop */])(state, props),
         canEdit: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_paper_wasp_editor_selectors__["g" /* getCanEdit */])(state, props)
