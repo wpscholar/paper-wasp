@@ -1,14 +1,14 @@
 import ComponentRegistry from 'component-registry';
 
-import {Column, ColumnEditor} from 'paper-wasp-component-column';
+import {registerColumn} from 'paper-wasp-component-column';
+import {registerRichText} from 'paper-wasp-component-rich-text';
+import {registerRow} from 'paper-wasp-component-row';
+
 import {Grid, GridEditor} from 'paper-wasp-component-grid';
-import {Row, RowEditor} from 'paper-wasp-component-row';
 import {Image, ImageEditor} from 'paper-wasp-component-image';
 import {ImageTile, ImageTileEditor} from 'paper-wasp-component-image-tile';
-import {Text, TextEditor} from 'paper-wasp-component-text';
 import {PullQuote, PullQuoteEditor} from 'paper-wasp-component-pull-quote';
 import {Quote, QuoteEditor} from 'paper-wasp-component-quote';
-import {RichText, RichTextEditor} from 'paper-wasp-component-rich-text';
 import {Heading, HeadingEditor} from 'paper-wasp-component-heading';
 import {Button, ButtonEditor} from 'paper-wasp-component-button';
 import {Video, VideoEditor} from 'paper-wasp-component-video';
@@ -18,17 +18,9 @@ const {paperWasp: {componentRegistry = ComponentRegistry}} = window;
 window.paperWasp.componentRegistry = componentRegistry;
 
 const components = [
-    {
-        canAdd: false,
-        canDelete: true,
-        canEdit: true,
-        class: Column,
-        classEditor: ColumnEditor,
-        group: 'component',
-        isDynamic: false,
-        label: 'Column',
-        type: 'column',
-    },
+    registerColumn,
+    registerRichText,
+    registerRow,
     {
         canAdd: true,
         canDelete: true,
@@ -39,29 +31,6 @@ const components = [
         isDynamic: false,
         label: 'Grid',
         type: 'grid',
-    },
-    {
-        canAdd: false,
-        canDelete: true,
-        canEdit: true,
-        class: Row,
-        classEditor: RowEditor,
-        group: 'component',
-        isDynamic: false,
-        label: 'Row',
-        type: 'row'
-    },
-    {
-        canAdd: true,
-        canDelete: true,
-        canEdit: true,
-        class: Text,
-        classEditor: TextEditor,
-        group: 'component',
-        isDynamic: false,
-        label: 'Text',
-        thumbnailUrl: '/assets/img/text.png',
-        type: 'text',
     },
     {
         canAdd: true,
@@ -86,18 +55,6 @@ const components = [
         label: 'Image Tile',
         thumbnailUrl: '/assets/img/image.jpeg',
         type: 'image-tile',
-    },
-    {
-        canAdd: true,
-        canDelete: true,
-        canEdit: true,
-        class: RichText,
-        classEditor: RichTextEditor,
-        group: 'component',
-        isDynamic: false,
-        label: 'Rich Text',
-        thumbnailUrl: '/assets/img/rich-text.png',
-        type: 'rich-text',
     },
     {
         canAdd: true,
