@@ -1,29 +1,24 @@
 // @flow
-import {connect} from 'react-redux';
-import {editComponent, onDragOver, onDragStart, onDrop, renderComponentSelector} from 'paper-wasp-editor/functions';
-import {getCanAppend, getCanDrag, getCanDrop, getCanEdit} from 'paper-wasp-editor/selectors';
-import {ComponentDecorator} from 'paper-wasp-component/decorator';
 
-import Component from './component';
-import ColumnEditor from './component-editor';
-import EditMode from './component-edit-mode';
+import {createFactory} from 'react';
 
-const Column = ComponentDecorator(Component);
+import {Column} from './container';
+import {ColumnEditMode} from './container-edit-mode';
+import {ColumnEditor} from './component-editor';
 
-const ColumnEditMode = connect(
-    (state, props) => ({
-        canAppend: getCanAppend(state, props),
-        canDrag: getCanDrag(state, props),
-        canDrop: getCanDrop(state, props),
-        canEdit: getCanEdit(state, props)
-    }),
-    (dispatch, {uid}) => ({
-        onAdd: () => renderComponentSelector(dispatch, uid),
-        onDragOver,
-        onDragStart,
-        onDrop: e => onDrop(e, dispatch),
-        onMenuClick: () => editComponent(dispatch, uid)
-    })
-)(ComponentDecorator(EditMode));
+const registerColumn = {
+    canAdd: false,
+    canDelete: true,
+    canEdit: true,
+    class: Column,
+    classEditor: ColumnEditor,
+    decorator: (props: Object) => {
+        return createFactory(ColumnEditMode)(props);
+    },
+    group: 'component',
+    isDynamic: false,
+    label: 'Column',
+    type: 'column'
+};
 
-export {Column, ColumnEditor, ColumnEditMode};
+export {Column, ColumnEditor, ColumnEditMode, registerColumn};
