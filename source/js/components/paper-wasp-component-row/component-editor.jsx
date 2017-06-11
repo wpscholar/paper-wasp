@@ -9,7 +9,7 @@ export default function RowEditor({components, updateComponent}: Props) {
     const box = components.map(({uid}, index) => {
 
         const initWidth = window.getComputedStyle(
-            document.querySelector(`[data-pw-uid='${uid}']`)
+            window.document.querySelector(`[data-pw-uid='${uid}']`)
         ).getPropertyValue('flex-basis');
 
         return (
