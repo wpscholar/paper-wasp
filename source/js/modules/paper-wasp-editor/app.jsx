@@ -33,7 +33,7 @@ class App {
             allowedAttributes: {},
             allowedTags: [],
             componentRegistry: {},
-            componentRenderMap: (mode, component) => component,
+            componentRenderMap: (mode, componentRegistry, component) => component,
             postId: 0,
             restBase: '',
             restNonce: '',

@@ -4,9 +4,6 @@ import {createFactory} from 'react';
 import {moveComponent, reorderComponents} from 'paper-wasp/action-creators';
 import {PaperWaspComponent, PaperWaspComponentEditor} from 'paper-wasp-component';
 import {PaperWaspComponentSelector} from 'paper-wasp-component-selector';
-import {RowEditMode} from 'paper-wasp-component-row';
-import {ColumnEditMode} from 'paper-wasp-component-column';
-import {PageEditMode} from 'paper-wasp-component-page';
 
 import {openModal, setActiveComponent, setModalContent} from './action-creators';
 
@@ -16,11 +13,13 @@ import {openModal, setActiveComponent, setModalContent} from './action-creators'
  * The component render map is responsible for wrapping the view components for editing.
  *
  * @param {Context} context The context for rendering.
+ * @param componentRegistry {Object} The registry for components.
  * @param component {Component} The original component to be rendered.
  * @returns {Component}
  */
 export function componentRenderMap(
     context: Context,
+    componentRegistry: Object,
     component: { props: Component }
 ) {
 
@@ -30,18 +29,18 @@ export function componentRenderMap(
     }
 
     // If we are rendering for edit, wrap (or replace) the components in the appropriate editor.
+
     const {uid, type} = component.props;
+
+    const componentDecorator = (props, children) => {
+        return createFactory(PaperWaspComponent)(props, children);
+    };
+
+    const decorate = componentRegistry.getProperty(type, 'decorator', componentDecorator);
+
     const props = Object.assign({}, component.props, {key: uid});
-    switch (type) {
-        case 'page':
-            return createFactory(PageEditMode)(props);
-        case 'row':
-            return createFactory(RowEditMode)(props);
-        case 'column':
-            return createFactory(ColumnEditMode)(props);
-        default:
-            return createFactory(PaperWaspComponent)(props, component);
-    }
+
+    return decorate(props, component);
 }
 
 /**
