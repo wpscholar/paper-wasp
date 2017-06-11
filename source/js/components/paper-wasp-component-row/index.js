@@ -1,39 +1,24 @@
 // @flow
 
-import {connect} from 'react-redux';
-import {deleteComponent, updateComponent} from 'paper-wasp/action-creators';
-import {getChildComponents} from 'paper-wasp/selectors';
-import {getCanDrag, getCanDrop} from 'paper-wasp-editor/selectors';
-import {ComponentDecorator} from 'paper-wasp-component/decorator';
-import {editComponent, onDragOver, onDragStart, onDrop} from 'paper-wasp-editor/functions';
+import {createFactory} from 'react';
 
-import Component from './component';
-import Editor from './component-editor';
-import EditMode from './component-edit-mode';
+import {Row} from './container';
+import {RowEditMode} from './container-edit-mode';
+import {RowEditor} from './container-editor';
 
-const Row = ComponentDecorator(Component);
+const registerRow = {
+    canAdd: false,
+    canDelete: true,
+    canEdit: true,
+    class: Row,
+    classEditor: RowEditor,
+    decorator: (props: Object) => {
+        return createFactory(RowEditMode)(props);
+    },
+    group: 'component',
+    isDynamic: false,
+    label: 'Row',
+    type: 'row'
+};
 
-const RowEditor = connect(
-    (state, props) => ({
-        components: getChildComponents(state, props)
-    }),
-    dispatch => ({
-        updateComponent: (uid, data) => dispatch(updateComponent(uid, data))
-    })
-)(ComponentDecorator(Editor));
-
-const RowEditMode = connect(
-    (state, props) => ({
-        canDrag: getCanDrag(state, props),
-        canDrop: getCanDrop(state, props)
-    }),
-    (dispatch, {uid}) => ({
-        onDelete: () => dispatch(deleteComponent(uid)),
-        onDragOver,
-        onDragStart,
-        onDrop: e => onDrop(e, dispatch),
-        onMenuClick: () => editComponent(dispatch, uid)
-    })
-)(ComponentDecorator(EditMode));
-
-export {Row, RowEditor, RowEditMode};
+export {Row, RowEditor, RowEditMode, registerRow};
