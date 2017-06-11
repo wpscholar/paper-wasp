@@ -48,10 +48,6 @@
 
 .paper-wasp-row.paper-wasp-collapse { padding: 0; }
 
-.paper-wasp-text--center { text-align: center; }
-
-.paper-wasp-text--right { text-align: right; }
-
 .paper-wasp-video--responsive .wp-video, .paper-wasp-video--responsive .wp-video-shortcode { width: 100% !important; }
 
 .paper-wasp-video--responsive .mejs-video, .paper-wasp-video--responsive iframe { max-width: 100%; }
