@@ -101,7 +101,7 @@ export const getChildren = createSelector(
                 return null;
             })
             .filter(Boolean)
-            .map(component => componentRenderMap(context, component));
+            .map(component => componentRenderMap(context, componentRegistry, component));
     }
 );
 
