@@ -2,34 +2,40 @@
 
 import {PaperWaspEditor} from 'paper-wasp-editor';
 
-const {
-    paperWasp: {
-        allowedTags,
-        allowedAttributes,
+const el = window.document.getElementById('paper-wasp');
+
+if (el) {
+
+    const {
+        paperWasp: {
+            allowedTags,
+            allowedAttributes,
+            components,
+            componentRegistry,
+            paperWaspPath,
+            postId,
+            restBase,
+            restNonce,
+            userId,
+        }
+    } = window;
+
+    const initialState = {
         components,
-        componentRegistry,
-        paperWaspPath,
-        postId,
-        restBase,
-        restNonce,
-        userId,
-    }
-} = window;
+        container: {
+            allowedAttributes,
+            allowedTags,
+            componentRegistry,
+            paperWaspPath,
+            postId,
+            restBase,
+            restNonce,
+            userId
+        }
+    };
 
-const initialState = {
-    components,
-    container: {
-        allowedAttributes,
-        allowedTags,
-        componentRegistry,
-        paperWaspPath,
-        postId,
-        restBase,
-        restNonce,
-        userId
-    }
-};
+    const App = new PaperWaspEditor(initialState);
 
-const App = new PaperWaspEditor(initialState);
+    App.render(el);
 
-App.render(window.document.getElementById('paper-wasp'));
+}

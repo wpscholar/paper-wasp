@@ -37191,36 +37191,40 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_paper_wasp_editor__ = __webpack_require__(358);
 
 
-var _window = window,
-    _window$paperWasp = _window.paperWasp,
-    allowedTags = _window$paperWasp.allowedTags,
-    allowedAttributes = _window$paperWasp.allowedAttributes,
-    components = _window$paperWasp.components,
-    componentRegistry = _window$paperWasp.componentRegistry,
-    paperWaspPath = _window$paperWasp.paperWaspPath,
-    postId = _window$paperWasp.postId,
-    restBase = _window$paperWasp.restBase,
-    restNonce = _window$paperWasp.restNonce,
-    userId = _window$paperWasp.userId;
+var el = window.document.getElementById('paper-wasp');
+
+if (el) {
+    var _window = window,
+        _window$paperWasp = _window.paperWasp,
+        allowedTags = _window$paperWasp.allowedTags,
+        allowedAttributes = _window$paperWasp.allowedAttributes,
+        components = _window$paperWasp.components,
+        componentRegistry = _window$paperWasp.componentRegistry,
+        paperWaspPath = _window$paperWasp.paperWaspPath,
+        postId = _window$paperWasp.postId,
+        restBase = _window$paperWasp.restBase,
+        restNonce = _window$paperWasp.restNonce,
+        userId = _window$paperWasp.userId;
 
 
-var initialState = {
-    components: components,
-    container: {
-        allowedAttributes: allowedAttributes,
-        allowedTags: allowedTags,
-        componentRegistry: componentRegistry,
-        paperWaspPath: paperWaspPath,
-        postId: postId,
-        restBase: restBase,
-        restNonce: restNonce,
-        userId: userId
-    }
-};
+    var initialState = {
+        components: components,
+        container: {
+            allowedAttributes: allowedAttributes,
+            allowedTags: allowedTags,
+            componentRegistry: componentRegistry,
+            paperWaspPath: paperWaspPath,
+            postId: postId,
+            restBase: restBase,
+            restNonce: restNonce,
+            userId: userId
+        }
+    };
 
-var App = new __WEBPACK_IMPORTED_MODULE_0_paper_wasp_editor__["a" /* PaperWaspEditor */](initialState);
+    var App = new __WEBPACK_IMPORTED_MODULE_0_paper_wasp_editor__["a" /* PaperWaspEditor */](initialState);
 
-App.render(window.document.getElementById('paper-wasp'));
+    App.render(el);
+}
 
 /***/ }),
 /* 289 */
