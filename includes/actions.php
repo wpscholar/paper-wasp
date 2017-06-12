@@ -123,3 +123,13 @@ add_action( 'rest_api_init', function () {
 	) );
 
 } );
+
+add_action( 'admin_bar_menu', function ( WP_Admin_Bar $wp_admin_bar ) {
+	if ( post_type_supports( get_post_type(), 'paper-wasp' ) && is_paper_wasp_enabled() && ! isset( $_GET['paper-wasp'] ) ) {
+		$wp_admin_bar->add_menu( [
+			'id'    => 'paper-wasp-edit',
+			'title' => 'Edit with Paper Wasp',
+			'href'  => '?paper-wasp=1'
+		] );
+	}
+}, 99 );

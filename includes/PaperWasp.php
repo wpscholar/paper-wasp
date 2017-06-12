@@ -62,7 +62,7 @@ class PaperWasp {
 				'<a href="%s" rel="permalink" aria-label="%s">%s</a>',
 				paper_wasp_edit_link( $post ),
 				/* translators: %s: post title */
-				esc_attr( sprintf( __( 'Edit &#8220;%s&#8221; in Paper Wasp', 'paper-wasp' ), $post->post_title ) ),
+				esc_attr( sprintf( __( 'Edit &#8220;%s&#8221; with Paper Wasp', 'paper-wasp' ), $post->post_title ) ),
 				__( 'Edit in Paper Wasp', 'paper-wasp' )
 			);
 
