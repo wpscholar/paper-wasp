@@ -48,9 +48,6 @@ export function components(state: ComponentCollection = [], action: Action) {
         case DELETE_COMPONENT:
             return deleteComponentBranch(state, action.uid);
 
-        case INSERT_COMPONENTS:
-            return insertComponents(state, action);
-
         case MOVE_COMPONENT:
             return moveComponent(state, action);
 

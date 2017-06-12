@@ -156,6 +156,20 @@ export function insertComponents(
     state: ComponentCollection,
     {components}: { components: ComponentCollection }
 ): ComponentCollection {
+    return state.concat(prepareInsert(state, {components}));
+}
+
+/**
+ * Prepare a state fragment containing an array of component objects to be inserted.
+ *
+ * @param state {ComponentCollection} An array of component objects
+ * @param components {ComponentCollection} (from action - see INSERT_COMPONENT action creator)
+ * @returns {ComponentCollection} An array of component objects to be inserted
+ */
+export function prepareInsert(
+    state: ComponentCollection,
+    {components}: { components: ComponentCollection }
+) {
     let uniqueId = Date.now();
     let stateFragment = [];
     const add = (uids, parent = 0) => {
@@ -181,7 +195,7 @@ export function insertComponents(
         );
     };
     add(findTopLevelComponentIds(components));
-    return state.concat(stateFragment);
+    return stateFragment;
 }
 
 /**

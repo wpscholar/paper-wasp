@@ -8,6 +8,7 @@ import modal from 'modal/reducer';
 import {components as componentsReducer} from 'paper-wasp/reducers';
 import defaultChildren from 'paper-wasp-default-children-middleware';
 import defaultData from 'paper-wasp-default-data-middleware';
+import insert from 'paper-wasp-insert-middleware';
 
 import {activeComponent, context} from './reducers';
 import PaperWaspActionBar from './components/action-bar';
@@ -52,6 +53,7 @@ class App {
         const middleware = [
             defaultData(componentRegistry),
             defaultChildren(componentRegistry),
+            insert(),
             promise
         ];
 
