@@ -7,9 +7,9 @@ export default function (componentRegistry) {
 
         const dispatched = next(action);
 
-        const lastAddedId = getLastAddedComponentId(store.getState());
-
         if (action.type === ADD_COMPONENT) {
+
+            const lastAddedId = action.uid || getLastAddedComponentId(store.getState());
 
             const defaultChildren = componentRegistry.getProperty(action.componentType, 'defaultChildren', action.defaultChildren || []);
 
