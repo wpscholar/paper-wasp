@@ -1,5 +1,7 @@
 // @flow
+
 import filter from 'lodash.filter';
+import sortBy from 'lodash.sortby';
 import {connect} from 'react-redux';
 import {addComponent} from 'paper-wasp/action-creators';
 import {getActiveComponentId, getCanEditComponentType} from 'paper-wasp-editor/selectors';
@@ -13,7 +15,7 @@ const PaperWaspComponentSelector = connect(
         componentTypes: (() => {
             const componentRegistry = state.container.componentRegistry;
             const componentMap = ({label, thumbnailUrl, type}) => ({label, thumbnailUrl, type});
-            return filter(componentRegistry.filter('canAdd'), {group}).map(componentMap);
+            return sortBy(filter(componentRegistry.filter('canAdd'), {group}).map(componentMap), 'label');
         })(),
         parent: getActiveComponentId(state)
     }),
