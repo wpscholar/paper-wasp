@@ -4,7 +4,7 @@
 
 .paper-wasp-text-right { text-align: right; }
 
-.paper-wasp-component { border: 1px dashed transparent; position: relative; min-height: 30px; }
+.paper-wasp-component { border: 1px dashed transparent; position: relative; min-height: 24px; }
 
 .paper-wasp-component__title { display: none; cursor: default; font-size: 16px; line-height: 100%; padding: .25em .5em; position: absolute; left: -1px; bottom: 100%; text-transform: capitalize; font-weight: lighter; border-radius: 6px 6px 0 0; border: 1px solid grey; border-bottom: 1px dashed #6ec1e4; }
 
@@ -200,7 +200,7 @@
 
 .paper-wasp-image--right { text-align: right; }
 
-.paper-wasp-image--cover img { width: 100%; }
+.paper-wasp-image--cover img { width: 100%; height: auto; max-height: 100%; }
 
 .paper-wasp-image img { max-width: 100%; }
 
