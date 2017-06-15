@@ -4,6 +4,13 @@
 
     position: relative;
 
+    &__content {
+      height: 100%;
+      .paper-wasp-component:only-child {
+        height: 100%;
+      }
+    }
+
     &:before, &:after {
       content: '';
       position: absolute;
@@ -110,7 +117,6 @@
     &--empty {
       .paper-wasp-column__content {
         min-height: 100px;
-        height: 100%;
         border: 1px dashed black;
         &:before {
           content: '+';

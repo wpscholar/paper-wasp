@@ -29,6 +29,7 @@
   }
 
   &__children {
+    height: 100%;
     a, button {
       pointer-events: none;
     }
