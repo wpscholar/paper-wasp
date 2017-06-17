@@ -23,15 +23,21 @@ export function componentRenderMap(
     component: { props: Component }
 ) {
 
+    const {uid, type} = component.props;
+
     // If we are rendering for display (i.e. behind the scenes to generate markup)
     if (context === 'view') {
+
+        // If component is dynamic, just create a placeholder
+        if (componentRegistry.getProperty(type, 'isDynamic', false)) {
+            return <div data-pw-type={type} data-pw-uid={uid} key={uid} />;
+        }
+
+        // Otherwise, return the actual component
         return component;
     }
 
     // If we are rendering for edit, wrap (or replace) the components in the appropriate editor.
-
-    const {uid, type} = component.props;
-
     const componentDecorator = (props, children) => {
         return createFactory(PaperWaspComponent)(props, children);
     };

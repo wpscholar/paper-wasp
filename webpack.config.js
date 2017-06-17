@@ -19,6 +19,7 @@ const extractCSS = new ExtractTextPlugin(`assets/css/[name]${cssFileExtension}`)
 const config = {
     entry: {
         'paper-wasp': [
+            './source/js/paper-wasp',
             './source/scss/paper-wasp.scss',
         ],
         'paper-wasp-editor': [

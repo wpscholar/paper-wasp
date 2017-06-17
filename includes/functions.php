@@ -18,6 +18,42 @@ function is_paper_wasp_enabled( WP_Post $post = null ) {
 }
 
 /**
+ * Checks if we are on the PaperWasp editor
+ *
+ * @param WP_Post|null $post
+ *
+ * @return bool
+ */
+function is_paper_wasp_editor( WP_Post $post = null ) {
+
+	$is_paper_wasp_editor = false;
+
+	if ( is_null( $post ) ) {
+		$post = get_post();
+	}
+
+	if ( $post && current_user_can( 'edit_post', $post->ID ) ) {
+		if ( is_admin() ) {
+			$is_paper_wasp_editor = post_type_supports( $post->post_type, PaperWaspAdmin::FEATURE );
+		} else if ( is_paper_wasp_enabled( $post ) && isset( $_GET['paper-wasp'] ) ) {
+			$is_paper_wasp_editor = true;
+		}
+	}
+
+	return $is_paper_wasp_editor;
+
+}
+
+/**
+ * Load the Paper Wasp editor.
+ */
+function paper_wasp_load_editor() {
+	wp_enqueue_media();
+	wp_enqueue_script( 'paper-wasp-editor' );
+	wp_enqueue_style( 'paper-wasp-editor' );
+}
+
+/**
  * Get PaperWasp edit link for a specific post.
  *
  * @param WP_Post $post
