@@ -95,7 +95,7 @@ export function getComponentBranch(state: Object, componentId: number = 0): Comp
 
     function getChildren(uids) {
         uids.forEach((uid) => {
-            const component = getComponentById({components: state}, uid);
+            const component = getComponentById({components: state.components}, uid);
             if (component) {
                 branch.push(component);
             }
