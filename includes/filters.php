@@ -44,14 +44,6 @@ add_filter( 'paper_wasp_get_components', function ( $components, WP_Post $post )
 
 	}
 
-	// TODO: Remove this later... it is only needed to convert pre-existing data into the right format
-	foreach ( $components as $key => &$value ) {
-		if ( ! isset( $value->uid ) && isset( $value->id ) ) {
-			$value->uid = absint( $value->id );
-			unset( $value->id );
-		}
-	}
-
 	return $components;
 }, 10, 2 );
 
