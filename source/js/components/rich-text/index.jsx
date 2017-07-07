@@ -14,6 +14,7 @@ class RichText extends Component {
     props: {
         height: number,
         onChange: Function,
+        src: string,
         text: string
     };
 
