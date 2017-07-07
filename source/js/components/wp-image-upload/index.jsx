@@ -13,7 +13,8 @@ class WordPressImageUpload extends Component {
     };
 
     static defaultProps = {
-        addImageText: 'Add Image'
+        addImageText: 'Add Image',
+        className: ''
     };
 
     uploader: {
