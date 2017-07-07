@@ -27,7 +27,7 @@ export function addComponent(
 ): ComponentCollection {
     const defaults = {
         data: {},
-        index: getNextIndex(state, action.parent),
+        index: getNextIndex(state, (action.parent || 0 )),
         parent: 0,
         type: componentType,
         uid: Date.now()

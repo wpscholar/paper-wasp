@@ -703,3 +703,25 @@ describe('getComponentBranch', () => {
     });
 
 });
+
+describe('getNextIndex', () => {
+
+    const parent = 0;
+
+    const components = [
+        {
+            data: {},
+            index: 0,
+            parent,
+            type: 'page',
+            uid: 1,
+        }
+    ];
+
+    const index = getNextIndex(components, parent);
+
+    it('should return the next available index given a parent', () => {
+        expect(index).toEqual(1);
+    });
+
+});
