@@ -38,7 +38,7 @@ class RichText extends Component {
 
         const {onImageChange} = this;
 
-        let newElem = document.createElement('div');
+        const newElem = document.createElement('div');
         newElem.className = 'tiny-image-editor';
 
         setTimeout(
