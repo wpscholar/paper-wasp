@@ -4,6 +4,7 @@ import filter from 'lodash.filter';
 import sortBy from 'lodash.sortby';
 import {connect} from 'react-redux';
 import {addComponent} from 'paper-wasp/action-creators';
+import {generateUniqueId} from 'paper-wasp/functions';
 import {getActiveComponentId, getCanEditComponentType} from 'paper-wasp-editor/selectors';
 import {editComponent} from 'paper-wasp-editor/functions';
 import {closeModal} from 'paper-wasp-editor/action-creators';
@@ -22,7 +23,7 @@ const PaperWaspComponentSelector = connect(
     dispatch => ({
         addComponent: (parent, type, store) => {
             // Explicitly set the uid, so we know what it is
-            const uid = Date.now();
+            const uid = generateUniqueId();
             // Add the component
             dispatch(addComponent({parent, type, uid}));
             // Determine if the component we are adding is editable

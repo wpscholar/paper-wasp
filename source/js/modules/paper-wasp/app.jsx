@@ -62,7 +62,7 @@ class App {
         const {componentRegistry} = state.container;
 
         Array.from(window.document.querySelectorAll('[data-pw-uid]')).forEach((el) => {
-            const uid = parseInt(el.getAttribute('data-pw-uid'), 10);
+            const uid = el.getAttribute('data-pw-uid');
             if (uid) {
                 const component = getCurrentComponent(state, {uid});
                 if (component) {

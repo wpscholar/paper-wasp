@@ -4,10 +4,10 @@ export type Component = {
     canDelete: boolean,
     canEdit: boolean,
     type: string,
-    parent: number,
+    parent: string,
     index: number,
     data: Object,
-    uid: number,
+    uid: string,
 };
 
 export type ComponentCollection = Array<Component>;

@@ -22,12 +22,12 @@ import {
 } from '../action-creators';
 
 type Action = {
-    uid: number,
+    uid: string,
     components: ComponentCollection,
     componentType: string,
     data: Object,
     orderedIds: Array<number>,
-    parent: number,
+    parent: string,
     type: string
 };
 

@@ -11,6 +11,8 @@ import type {Component, ComponentCollection} from './types';
 import {addComponent as generateAddComponentAction} from './action-creators';
 import {getComponents, getChildComponents} from './selectors';
 
+let uniqueId;
+
 /**
  * Component reducer helper function
  * Adds a component
@@ -23,16 +25,20 @@ import {getComponents, getChildComponents} from './selectors';
  */
 export function addComponent(
     state: ComponentCollection,
-    {componentType, type, ...action}: { componentType: string, parent: number, type: string }
+    {componentType, type, ...action}: { componentType: string, parent: string, type: string }
 ): ComponentCollection {
     const defaults = {
         data: {},
-        index: getNextIndex(state, (action.parent || 0 )),
-        parent: 0,
+        index: getNextIndex(state, (action.parent || '0')),
+        parent: '0',
         type: componentType,
-        uid: Date.now()
+        uid: generateUniqueId()
     };
-    return [...state, Object.assign(defaults, action)];
+    const component = Object.assign(defaults, action);
+    component.parent = String(component.parent);
+    component.uid = String(component.uid);
+    setLastGeneratedId(component.uid);
+    return [...state, component];
 }
 
 /**
@@ -43,7 +49,7 @@ export function addComponent(
  * @param uid {int} The ID of the component to be deleted.
  * @returns {ComponentCollection}
  */
-export function deleteComponent(state: ComponentCollection, uid: number): ComponentCollection {
+export function deleteComponent(state: ComponentCollection, uid: string): ComponentCollection {
     return without(state, find(state, {uid}));
 }
 
@@ -56,7 +62,7 @@ export function deleteComponent(state: ComponentCollection, uid: number): Compon
  */
 export function deleteComponentBranch(
     state: ComponentCollection,
-    uids: number | Array<number>
+    uids: string | Array<string>
 ): Array<number> {
     let newState = state;
     Array.prototype.concat(uids).forEach((uid) => {
@@ -78,6 +84,34 @@ export function deleteComponentBranch(
 export function findTopLevelComponentIds(components: ComponentCollection): Array<number> {
     const uids = components.map(({uid}) => uid);
     return map(filter(components, component => !includes(uids, component.parent)), 'uid');
+}
+
+/**
+ * Generate a unique ID
+ *
+ * @returns {string}
+ */
+export function generateUniqueId() {
+    // eslint-disable-next-line no-bitwise
+    return `${Date.now()}xxxxxxxxxx`.replace(/x/g, () => (0 | Math.random() * 10).toString());
+}
+
+/**
+ * Sets the last generated component ID.
+ *
+ * @param uid {string}
+ */
+export function setLastGeneratedId(uid: string) {
+    uniqueId = uid;
+}
+
+/**
+ * Gets the last generated component ID.
+ *
+ * @returns {string}
+ */
+export function getLastGeneratedId() {
+    return uniqueId;
 }
 
 /**
@@ -128,7 +162,7 @@ export function getComponentById(state: Object, uid: number): Component {
  * @param parent {int} The ID of the parent component
  * @returns {int} The index to be used for the next component insertion for the parent
  */
-export function getNextIndex(state: ComponentCollection, parent: number): number {
+export function getNextIndex(state: ComponentCollection, parent: string): number {
     const siblings = filter(state, {parent});
     return siblings && siblings.length ? max(map(siblings, 'index')) + 1 : 0;
 }
@@ -170,17 +204,15 @@ export function prepareInsert(
     state: ComponentCollection,
     {components}: { components: ComponentCollection }
 ) {
-    let uniqueId = Date.now();
     let stateFragment = [];
     const add = (uids, parent = 0) => {
         uids.forEach(
             (uid) => {
                 const component = getComponentById({components}, uid);
                 if (component) {
-                    uniqueId += 1;
                     const action = Object.assign({}, component, {
                         parent: parent || component.parent || 0,
-                        uid: uniqueId
+                        uid: generateUniqueId()
                     });
                     if (parent === 0) {
                         action.index = getNextIndex(state, component.parent);
@@ -188,7 +220,7 @@ export function prepareInsert(
                     stateFragment = addComponent(stateFragment, generateAddComponentAction(action));
                     const children = getChildComponents({components}, {uid});
                     if (children.length) {
-                        add(map(children, 'uid'), uniqueId);
+                        add(map(children, 'uid'), action.uid);
                     }
                 }
             }
@@ -203,13 +235,13 @@ export function prepareInsert(
  * Moves a component from one parent to another
  *
  * @param state {ComponentCollection} An array of component objects
- * @param uid {int} (from action - see MOVE_COMPONENT action creator)
- * @param parent {int} (from action - see MOVE_COMPONENT action creator)
+ * @param uid {string} (from action - see MOVE_COMPONENT action creator)
+ * @param parent {string} (from action - see MOVE_COMPONENT action creator)
  * @returns {ComponentCollection} An array of component objects
  */
 export function moveComponent(
     state: ComponentCollection,
-    {uid, parent}: { uid: number, parent: number }
+    {uid, parent}: { uid: string, parent: string }
 ): ComponentCollection {
     const index = indexOf(state, find(state, {uid}));
     return [
@@ -279,7 +311,7 @@ export function updateComponent(
  */
 export function updateComponentData(
     state: ComponentCollection,
-    {data, uid}: { data: Object, uid: number }
+    {data, uid}: { data: Object, uid: string }
 ): ComponentCollection {
     const index = indexOf(state, find(state, {uid}));
     return [

@@ -68,11 +68,11 @@ class PaperWaspUtilities {
 
 		$cleanComponent = (object) array(
 			// Unique (per page) component id
-			'uid'    => absint( self::getValue( $component, 'uid' ) ),
+			'uid'    => sanitize_text_field( self::getValue( $component, 'uid' ) ),
 			// Component type
 			'type'   => sanitize_text_field( self::getValue( $component, 'type' ) ),
 			// Parent uid
-			'parent' => absint( self::getValue( $component, 'parent' ) ),
+			'parent' => sanitize_text_field( self::getValue( $component, 'parent' ) ),
 			// Index for ordering siblings
 			'index'  => absint( self::getValue( $component, 'index' ) ),
 			// Object for holding component-specific data

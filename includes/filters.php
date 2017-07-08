@@ -8,7 +8,7 @@ add_filter( 'paper_wasp_get_components', function ( $components, WP_Post $post )
 
 		$components = array(
 			array(
-				'uid'    => $now,
+				'uid'    => $now . '0000000000',
 				'type'   => 'page',
 				'parent' => 0,
 				'index'  => 0,
@@ -18,23 +18,23 @@ add_filter( 'paper_wasp_get_components', function ( $components, WP_Post $post )
 
 		if ( ! empty( $post->post_content ) ) {
 			$components[] = array(
-				'uid'    => $now + 1,
+				'uid'    => $now . '0000000001',
 				'type'   => 'row',
-				'parent' => $now,
+				'parent' => $now . '0000000000',
 				'index'  => 0,
 				'data'   => new stdClass(),
 			);
 			$components[] = array(
-				'uid'    => $now + 2,
+				'uid'    => $now . '0000000002',
 				'type'   => 'column',
-				'parent' => $now + 1,
+				'parent' => $now . '0000000001',
 				'index'  => 0,
 				'data'   => new stdClass(),
 			);
 			$components[] = array(
-				'uid'    => $now + 3,
+				'uid'    => $now . '0000000003',
 				'type'   => 'rich-text',
-				'parent' => $now + 2,
+				'parent' => $now . '0000000002',
 				'index'  => 0,
 				'data'   => (object) array(
 					'text' => apply_filters( 'the_content', $post->post_content )

@@ -1,5 +1,5 @@
 import {ADD_COMPONENT, insertComponents} from 'paper-wasp/action-creators';
-import {getLastAddedComponentId} from 'paper-wasp/selectors';
+import {getLastGeneratedId} from 'paper-wasp/functions';
 
 export default function (componentRegistry) {
 
@@ -9,7 +9,7 @@ export default function (componentRegistry) {
 
         if (action.type === ADD_COMPONENT) {
 
-            const lastAddedId = action.uid || getLastAddedComponentId(store.getState());
+            const lastAddedId = action.uid || getLastGeneratedId();
 
             const defaultChildren = componentRegistry.getProperty(action.componentType, 'defaultChildren', action.defaultChildren || []);
 

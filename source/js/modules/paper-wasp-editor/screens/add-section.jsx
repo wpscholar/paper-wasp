@@ -2,7 +2,6 @@
 /* eslint-disable sorting/sort-object-props */
 import {connect} from 'react-redux';
 import {insertComponents} from 'paper-wasp/action-creators';
-import {getPageId} from 'paper-wasp/selectors';
 
 import {closeModal} from '../action-creators';
 

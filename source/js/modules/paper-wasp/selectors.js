@@ -65,7 +65,7 @@ export const getCurrentComponent = (
  */
 export const getPage = (
     {components}: { components: ComponentCollection }
-): Component => find(components, {parent: 0, type: 'page'});
+): Component => find(components, {parent: '0', type: 'page'});
 
 /**
  * Get the page ID
@@ -102,18 +102,5 @@ export const getChildren = createSelector(
             })
             .filter(Boolean)
             .map(component => componentRenderMap(context, componentRegistry, component));
-    }
-);
-
-/**
- * Get last added component ID
- *
- * @param components {ComponentCollection}
- * @returns {int}
- */
-export const getLastAddedComponentId = createSelector(
-    [getComponents],
-    (components): number => {
-        return max(map(components, 'uid')) || 0;
     }
 );

@@ -55,7 +55,7 @@ export function componentRenderMap(
  * @param dispatch {Function} The dispatch function from the store.
  * @param uid {int} The ID of the component to be edited.
  */
-export function editComponent(dispatch: Function, uid: number) {
+export function editComponent(dispatch: Function, uid: string) {
     dispatch(setActiveComponent(uid));
     dispatch(setModalContent(<PaperWaspComponentEditor uid={uid} />));
     dispatch(openModal());
@@ -146,12 +146,12 @@ export function onDrop(e: Object, dispatch: Function) {
     e.stopPropagation();
     const {el, type} = window.paperWasp.dragAndDrop;
     const target = e.target.closest(`[data-pw-drop-zone="${type}"]`);
-    const uid = parseInt(el.getAttribute('data-pw-uid'), 10);
-    const parent = parseInt(target.getAttribute('data-pw-uid'), 10);
+    const uid = el.getAttribute('data-pw-uid');
+    const parent = target.getAttribute('data-pw-uid');
     const orderedIds = [];
     [].forEach.call(target.childNodes, (node) => {
         if (node !== el) {
-            orderedIds.push(parseInt(node.getAttribute('data-pw-uid'), 10));
+            orderedIds.push(node.getAttribute('data-pw-uid'));
         }
     });
     // Do clean up, in case dragend event doesn't fire.

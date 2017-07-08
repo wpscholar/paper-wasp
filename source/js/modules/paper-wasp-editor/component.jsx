@@ -7,8 +7,8 @@ import {Page, PageEditMode} from 'paper-wasp-component-page';
 import {openModal, setModalContent} from './action-creators';
 import {onDrag, onDragEnd} from './functions';
 
-import AddSection from './screens/add-section';
-import AddTemplate from './screens/add-template';
+import AddSectionScreen from './screens/add-section';
+import AddTemplateScreen from './screens/add-template';
 
 type Props = {
     addSection: Function,
@@ -47,11 +47,11 @@ const PaperWaspEditorConnect = connect(
     },
     dispatch => ({
         addSection: (uid) => {
-            dispatch(setModalContent(<AddSection uid={uid} />));
+            dispatch(setModalContent(<AddSectionScreen uid={uid} />));
             dispatch(openModal());
         },
         addTemplate: (uid) => {
-            dispatch(setModalContent(<AddTemplate uid={uid} />));
+            dispatch(setModalContent(<AddTemplateScreen uid={uid} />));
             dispatch(openModal());
         },
         drag: onDrag,
