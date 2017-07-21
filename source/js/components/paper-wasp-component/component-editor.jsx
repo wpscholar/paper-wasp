@@ -75,14 +75,10 @@ class ComponentEditor extends Component {
 
                 {canEdit && screen === 'edit' ? (
                     <EditScreen
-                        canDelete={canDelete}
-                        canEdit={canEdit}
                         children={children} // eslint-disable-line react/no-children-prop
                         data={data}
-                        onCancel={onCancel}
                         onChange={onDataChange}
-                        onDelete={onDelete}
-                        onSave={onSave} />
+                    />
                 ) : null}
 
                 {canEdit ? (
