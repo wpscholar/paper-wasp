@@ -47,11 +47,12 @@ class ComponentEditor extends Component {
 
     onScreenChange = (screen: 'edit' | 'advanced') => this.setState({screen});
 
-    onSave = () => this.props.onSave({
-        className: this.state.className,
-        data: this.state.data,
-        id: this.state.id
-    });
+    onSave = () => {
+        const {onCancel, onSave} = this.props;
+        const {className, data, id} = this.state;
+        onSave({className, data, id});
+        onCancel(); // Closes modal
+    };
 
     render() {
 

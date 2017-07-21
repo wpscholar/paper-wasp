@@ -57,7 +57,6 @@ const PaperWaspComponentEditor = connect(
         },
         onSave: ({className, data, id}) => {
             dispatch(updateComponent(uid, {className, data, id}));
-            dispatch(closeModal());
         }
     })
 )(ComponentEditor);
