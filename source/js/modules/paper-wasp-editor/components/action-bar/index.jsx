@@ -3,9 +3,9 @@ import 'whatwg-fetch';
 import ReactDomServer from 'react-dom/server';
 import {Provider, connect} from 'react-redux';
 import {PaperWasp} from 'paper-wasp';
+import {setEditContext, setViewContext} from 'paper-wasp/action-creators';
 
-import {setEditContext, setModalContent, setViewContext, openModal} from '../../action-creators';
-
+import {setModalContent, openModal} from '../../action-creators';
 import ActionBar from './component';
 
 const PaperWaspActionBar = connect(

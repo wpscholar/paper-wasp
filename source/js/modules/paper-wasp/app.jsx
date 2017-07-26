@@ -4,7 +4,7 @@ import {createStore, combineReducers, applyMiddleware, compose} from 'redux';
 import {Provider} from 'react-redux';
 import {createLogger} from 'redux-logger';
 import promise from 'redux-promise';
-import {components as componentsReducer} from 'paper-wasp/reducers';
+import {components as componentsReducer, context} from 'paper-wasp/reducers';
 
 import {getCurrentComponent} from './selectors';
 import type {State} from './types';
@@ -20,6 +20,7 @@ class App {
         const defaultState = {
             components: [],
             container: {},
+            context: 'view'
         };
 
         const defaultContainer = {
@@ -50,6 +51,7 @@ class App {
             combineReducers({
                 components: componentsReducer,
                 container: (state = {}) => state,
+                context
             }),
             this.initialState,
             composeEnhancers(applyMiddleware(...middleware))

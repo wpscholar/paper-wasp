@@ -5,12 +5,12 @@ import {Provider} from 'react-redux';
 import {createLogger} from 'redux-logger';
 import promise from 'redux-promise';
 import modal from 'modal/reducer';
-import {components as componentsReducer} from 'paper-wasp/reducers';
+import {components as componentsReducer, context} from 'paper-wasp/reducers';
 import defaultChildren from 'paper-wasp-default-children-middleware';
 import defaultData from 'paper-wasp-default-data-middleware';
 import insert from 'paper-wasp-insert-middleware';
 
-import {activeComponent, context} from './reducers';
+import {activeComponent} from './reducers';
 import PaperWaspActionBar from './components/action-bar';
 import PaperWaspEditor from './component';
 import PaperWaspModal from './components/modal';
