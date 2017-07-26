@@ -19,7 +19,9 @@ class ComponentEditor extends Component {
         label: string,
         onCancel: Function,
         onDelete: Function,
-        onSave: Function
+        onSave: Function,
+        showMenu: boolean,
+        uid: string
     };
 
     // eslint-disable-next-line react/sort-comp
@@ -43,7 +45,7 @@ class ComponentEditor extends Component {
     onChange = (data: Object) => this.setState(data);
 
     onDataChange = (data: Object) =>
-        this.setState({data: Object.assign({}, this.state.data, data)});
+    this.setState({data: Object.assign({}, this.state.data, data)});
 
     onScreenChange = (screen: 'edit' | 'advanced') => this.setState({screen});
 
@@ -54,10 +56,16 @@ class ComponentEditor extends Component {
         onCancel(); // Closes modal
     };
 
+    onDelete = () => {
+        const {onCancel, onDelete, uid} = this.props;
+        onDelete(uid);
+        onCancel(); // Closes modal
+    };
+
     render() {
 
-        const {onChange, onDataChange, onSave, onScreenChange, props, state} = this;
-        const {canDelete, canEdit, children, label, onCancel, onDelete} = props;
+        const {onChange, onDataChange, onDelete, onSave, onScreenChange, props, state} = this;
+        const {canDelete, canEdit, children, label, onCancel, showMenu = true} = props;
         const {className, data, id, screen} = state;
 
         return (
@@ -65,13 +73,14 @@ class ComponentEditor extends Component {
 
                 <div className="paper-wasp-modal__title">{label}</div>
 
-                {canEdit ? <Menu onClick={onScreenChange} screen={screen} /> : null }
+                {canEdit && showMenu ? <Menu onClick={onScreenChange} screen={screen} /> : null }
 
                 {canEdit && screen === 'advanced' ? (
                     <AdvancedScreen
                         className={className}
                         id={id}
-                        onChange={onChange} />
+                        onChange={onChange}
+                    />
                 ) : null}
 
                 {canEdit && screen === 'edit' ? (

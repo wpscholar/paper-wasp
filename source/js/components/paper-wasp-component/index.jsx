@@ -51,10 +51,7 @@ const PaperWaspComponentEditor = connect(
     },
     (dispatch, {uid}) => ({
         onCancel: () => dispatch(closeModal()),
-        onDelete: () => {
-            dispatch(deleteComponent(uid));
-            dispatch(closeModal());
-        },
+        onDelete: () => dispatch(deleteComponent(uid)),
         onSave: ({className, data, id}) => {
             dispatch(updateComponent(uid, {className, data, id}));
         }
