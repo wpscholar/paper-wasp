@@ -19,10 +19,12 @@ const extractCSS = new ExtractTextPlugin(`assets/css/[name]${cssFileExtension}`)
 const config = {
     entry: {
         'paper-wasp': [
+            './source/js/polyfills/object-assign.js',
             './source/js/paper-wasp',
             './source/scss/paper-wasp.scss',
         ],
         'paper-wasp-editor': [
+            './source/js/polyfills/object-assign.js',
             './source/scss/paper-wasp-editor.scss',
             'react',
             './source/js/paper-wasp-editor'
