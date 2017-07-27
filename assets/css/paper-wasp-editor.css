@@ -146,6 +146,10 @@
 
 .paper-wasp-modal__content p { margin: .5em 0; padding: 0; }
 
+.paper-wasp-modal__content-small { background: white; position: absolute; top: 50%; left: 50%; -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%); padding: 30px; max-height: calc(100vh - 80px); border-radius: 10px; }
+
+.paper-wasp-modal__content-small p { margin: .5em 0; padding: 0; }
+
 .paper-wasp-modal__title { font-size: 28px; border-bottom: 1px solid #dedede; padding: 0 0 .6em 0; margin: 0 0 1em 0; line-height: 1em; }
 
 .paper-wasp-modal__close, .paper-wasp-modal__close:hover, .paper-wasp-modal__close:focus { background: transparent; border: none; font-size: 40px; line-height: 1em; margin: 0; padding: 0; position: absolute; right: 0; top: 0; width: 40px; font-weight: normal; }
@@ -155,6 +159,64 @@
 .paper-wasp-modal__scroll { padding: 10px; overflow-y: auto; max-height: calc(100vh - 9.2em); }
 
 .paper-wasp-modal--open { display: block; }
+
+.paper-wasp-spinner-container { text-align: center; }
+
+.paper-wasp-spinner { -webkit-animation: rotator 1.4s linear infinite; animation: rotator 1.4s linear infinite; }
+
+@-webkit-keyframes rotator { 0% { -webkit-transform: rotate(0deg); transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(270deg); transform: rotate(270deg); } }
+
+@keyframes rotator { 0% { -webkit-transform: rotate(0deg); transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(270deg); transform: rotate(270deg); } }
+
+.paper-wasp-spinner-path { stroke-dasharray: 187; stroke-dashoffset: 0; -webkit-transform-origin: center; transform-origin: center; -webkit-animation: dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite; animation: dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite; }
+
+@-webkit-keyframes colors { 0% { stroke: #4285F4; }
+  25% { stroke: #DE3E35; }
+  50% { stroke: #F7C223; }
+  75% { stroke: #1B9A59; }
+  100% { stroke: #4285F4; } }
+
+@keyframes colors { 0% { stroke: #4285F4; }
+  25% { stroke: #DE3E35; }
+  50% { stroke: #F7C223; }
+  75% { stroke: #1B9A59; }
+  100% { stroke: #4285F4; } }
+
+@-webkit-keyframes dash { 0% { stroke-dashoffset: 187; }
+  50% { stroke-dashoffset: 46.75;
+    -webkit-transform: rotate(135deg);
+            transform: rotate(135deg); }
+  100% { stroke-dashoffset: 187;
+    -webkit-transform: rotate(450deg);
+            transform: rotate(450deg); } }
+
+@keyframes dash { 0% { stroke-dashoffset: 187; }
+  50% { stroke-dashoffset: 46.75;
+    -webkit-transform: rotate(135deg);
+            transform: rotate(135deg); }
+  100% { stroke-dashoffset: 187;
+    -webkit-transform: rotate(450deg);
+            transform: rotate(450deg); } }
+
+.paper-wasp-checkmark-container { text-align: center; }
+
+.paper-wasp-checkmark { width: 56px; height: 56px; border-radius: 50%; stroke-width: 3; stroke: #000; stroke-miterlimit: 10; box-shadow: inset 0px 0px 0px #7ac142; -webkit-animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both; animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both; }
+
+.paper-wasp-checkmark__check { -webkit-transform-origin: 50% 50%; transform-origin: 50% 50%; stroke-dasharray: 48; stroke-dashoffset: 48; -webkit-animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards; animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards; }
+
+@-webkit-keyframes stroke { 100% { stroke-dashoffset: 0; } }
+
+@keyframes stroke { 100% { stroke-dashoffset: 0; } }
+
+@-webkit-keyframes scale { 0%, 100% { -webkit-transform: none; transform: none; }
+  50% { -webkit-transform: scale3d(1.1, 1.1, 1); transform: scale3d(1.1, 1.1, 1); } }
+
+@keyframes scale { 0%, 100% { -webkit-transform: none; transform: none; }
+  50% { -webkit-transform: scale3d(1.1, 1.1, 1); transform: scale3d(1.1, 1.1, 1); } }
+
+.paper-wasp-checkmark-text { display: inline-block; stroke-miterlimit: 10; -webkit-animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both; animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both; }
 
 .paper-wasp-editor__screen_add_section button { color: black; display: inline-block; background: none; margin: 0; padding: 10px; font-weight: normal; text-transform: none; }
 
