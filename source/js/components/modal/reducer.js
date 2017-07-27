@@ -15,14 +15,15 @@ type State = {
 
 const initialState = {
     content: '',
-    isOpen: false
+    isOpen: false,
+    showClose: true
 };
 
 export default function (state: State = initialState, action: Action) {
     switch (action.type) {
 
         case 'MODAL_OPEN':
-            return Object.assign({}, state, {isOpen: true});
+            return Object.assign({}, state, {isOpen: true, showClose: action.showClose});
 
         case 'MODAL_CLOSE':
             return Object.assign({}, state, {isOpen: false});

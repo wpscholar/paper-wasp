@@ -7,6 +7,7 @@ const PaperWaspModal = connect(
     state => ({
         children: state.modal.content,
         isOpen: state.modal.isOpen,
+        showClose: state.modal.showClose
     }),
     dispatch => ({
         close: () => dispatch(closeModal())

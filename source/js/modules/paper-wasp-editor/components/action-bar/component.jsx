@@ -1,9 +1,15 @@
 // @flow
 
 import {PropTypes} from 'prop-types';
+import Modal from 'modal';
+import Spinner from '../spinner';
+import Checkmark from '../checkmark';
 
 type Props = {
+    isSaving: bool,
+    isSuccess: bool,
     onSave: Function,
+    showModal: bool
 };
 
 type Context = {
@@ -14,7 +20,7 @@ ActionBar.contextTypes = {
     store: PropTypes.object
 };
 
-function ActionBar({onSave}: Props, {store}: Context) {
+function ActionBar({isSaving, isSuccess, onSave, showModal}: Props, {store}: Context) {
     return (
         <div className="paper-wasp-action-bar">
 
@@ -24,6 +30,18 @@ function ActionBar({onSave}: Props, {store}: Context) {
                 rel="noopener noreferrer" target="_blank">View</a>
 
             <button className="paper-wasp-button-primary" onClick={() => onSave(store)} type="button">Save</button>
+
+            <Modal isOpen={showModal} showClose={!isSuccess && !isSaving}>
+                {isSaving ? (<Spinner />) : (null)}
+                {isSuccess && !isSaving ? (<Checkmark />) : (null)}
+                {!isSuccess && !isSaving ? (
+                    <p>
+                        Sorry, it looks like something went wrong.
+                        We weren&apos;t able to save your data.
+                        Please try again.
+                    </p>
+                ) : (null)}
+            </Modal>
 
         </div>
     );

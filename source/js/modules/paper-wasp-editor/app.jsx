@@ -10,7 +10,7 @@ import defaultChildren from 'paper-wasp-default-children-middleware';
 import defaultData from 'paper-wasp-default-data-middleware';
 import insert from 'paper-wasp-insert-middleware';
 
-import {activeComponent} from './reducers';
+import {actionBar, activeComponent} from './reducers';
 import PaperWaspActionBar from './components/action-bar';
 import PaperWaspEditor from './component';
 import PaperWaspModal from './components/modal';
@@ -66,6 +66,7 @@ class App {
 
         const store = createStore(
             combineReducers({
+                actionBar,
                 activeComponent,
                 components: componentsReducer,
                 container: (state = {}) => state,

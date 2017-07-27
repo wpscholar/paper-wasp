@@ -5,11 +5,20 @@ import {Provider, connect} from 'react-redux';
 import {PaperWasp} from 'paper-wasp';
 import {setEditContext, setViewContext} from 'paper-wasp/action-creators';
 
-import {setModalContent, openModal} from '../../action-creators';
+import {
+    actionBarHideModal,
+    actionBarSaveStart,
+    actionBarSaveSuccess,
+    actionBarSaveFailure
+} from '../../action-creators';
 import ActionBar from './component';
 
 const PaperWaspActionBar = connect(
-    null,
+    state => ({
+        isSaving: state.actionBar.isSaving,
+        isSuccess: state.actionBar.isSuccess,
+        showModal: state.actionBar.showModal
+    }),
     dispatch => ({
         onSave: (store) => {
 
@@ -28,6 +37,8 @@ const PaperWaspActionBar = connect(
             // Return to edit context for normal edit mode rendering
             dispatch(setEditContext());
 
+            dispatch(actionBarSaveStart());
+
             fetch(`${restBase}paper-wasp/v1/posts/${postId}`, {
                 body: JSON.stringify({
                     content,
@@ -40,16 +51,12 @@ const PaperWaspActionBar = connect(
                 },
                 method: 'POST',
             }).then((response) => {
-                if (!response.ok) {
-                    const message = (
-                        <p>
-                            Sorry, it looks like something went wrong.
-                            We weren&apos;t able to save your data.
-                            Please try again.
-                        </p>
-                    );
-                    dispatch(setModalContent(message));
-                    dispatch(openModal());
+                if (response.ok) {
+                    dispatch(actionBarSaveSuccess());
+
+                    setTimeout(() => { dispatch(actionBarHideModal()); }, 2000);
+                } else {
+                    dispatch(actionBarSaveFailure());
                 }
             });
         }
