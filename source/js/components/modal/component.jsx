@@ -10,7 +10,8 @@ class Modal extends Component {
     props: {
         children: ReactChildren,
         close: Function,
-        isOpen: boolean
+        isOpen: boolean,
+        showClose: bool
     };
 
     /**
@@ -45,7 +46,7 @@ class Modal extends Component {
 
     render() {
 
-        const {children, close, isOpen} = this.props;
+        const {children, close, isOpen, showClose = true} = this.props;
 
         if (!isOpen) {
             return null;
@@ -58,8 +59,12 @@ class Modal extends Component {
 
         return (
             <div className={classes} onClick={close}>
-                <div className="paper-wasp-modal__content" onClick={e => e.stopPropagation()}>
-                    <button className="paper-wasp-modal__close" onClick={close} />
+                <div className={!showClose ? 'paper-wasp-modal__content-small' : 'paper-wasp-modal__content'} onClick={e => e.stopPropagation()}>
+                    {
+                        showClose
+                        ? <button className="paper-wasp-modal__close" onClick={close} />
+                        : null
+                    }
                     <div className="paper-wasp-modal__scroll">
                         {children}
                     </div>
