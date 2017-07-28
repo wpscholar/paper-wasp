@@ -160,7 +160,7 @@
 
 .paper-wasp-modal--open { display: block; }
 
-.paper-wasp-spinner-container { text-align: center; }
+.paper-wasp-spinner-container { overflow: hidden; text-align: center; }
 
 .paper-wasp-spinner { -webkit-animation: rotator 1.4s linear infinite; animation: rotator 1.4s linear infinite; }
 
