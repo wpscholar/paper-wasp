@@ -36,7 +36,8 @@ function Menu({onClick, screen}: Props) {
                         className={classes.join(' ').trim()}
                         key={key}
                         onClick={() => onClick(key)}
-                        title={title}>
+                        title={title}
+                        type="button">
                         {icon}
                     </button>
                 );
