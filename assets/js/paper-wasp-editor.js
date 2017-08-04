@@ -39447,7 +39447,8 @@ function Menu(_ref) {
                     }(function () {
                         return onClick(key);
                     }),
-                    title: title },
+                    title: title,
+                    type: 'button' },
                 icon
             );
         })
