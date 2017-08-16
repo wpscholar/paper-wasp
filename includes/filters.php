@@ -59,13 +59,19 @@ add_filter( 'the_content', function ( $content ) {
 add_filter( 'wp_kses_allowed_html', function ( $allowed, $context ) {
 
 	if ( 'post' === $context ) {
-		$allowed['div']['data-pw-uid']    = true;
-		$allowed['div']['data-pw-type']   = true;
+		$allowed['div']['data-pw-uid'] = true;
+		$allowed['div']['data-pw-type'] = true;
 		$allowed['div']['data-pw-parent'] = true;
-		$allowed['div']['data-pw-index']  = true;
-		$allowed['div']['data-pw-data']   = true;
+		$allowed['div']['data-pw-index'] = true;
+		$allowed['div']['data-pw-data'] = true;
 	}
 
 	return $allowed;
 
 }, 10, 2 );
+
+add_action( 'current_screen', function ( $screen ) {
+	if ( isset( $screen->post_type ) && post_type_supports( $screen->post_type, PaperWasp::FEATURE ) ) {
+		remove_post_type_support( $screen->post_type, 'editor' );
+	}
+} );
