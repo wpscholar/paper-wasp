@@ -133,3 +133,9 @@ add_action( 'admin_bar_menu', function ( WP_Admin_Bar $wp_admin_bar ) {
 		] );
 	}
 }, 99 );
+
+add_action( 'current_screen', function ( $screen ) {
+	if ( isset( $screen->post_type ) && post_type_supports( $screen->post_type, PaperWasp::FEATURE ) && is_paper_wasp_enabled(get_post($_GET['post'])) ) {
+		remove_post_type_support( $screen->post_type, 'editor' );
+	}
+} );
