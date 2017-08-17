@@ -1,0 +1,22 @@
+{
+    "name": "paper-wasp-component-image",
+    "version": "1.0.0",
+    "description": "Image component for Paper Wasp",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "watch": "webpack --watch"
+    },
+    "author": "Micah Wood <micah@wpscholar.com> (http://wpscholar.com)",
+    "license": "ISC",
+    "devDependencies": {
+        "babel": "^6.23.0",
+        "babel-cli": "^6.26.0",
+        "babel-plugin-module-alias": "^1.6.0",
+        "babel-plugin-transform-class-properties": "^6.24.1",
+        "babel-plugin-transform-object-rest-spread": "^6.26.0",
+        "babel-preset-env": "^1.6.0",
+        "babel-preset-flow": "^6.23.0",
+        "babel-preset-react": "^6.24.1"
+    }
+}

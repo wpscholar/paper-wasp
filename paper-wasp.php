@@ -16,6 +16,8 @@
 
 define( 'PAPER_WASP_VERSION', '0.1.0' );
 define( 'PAPER_WASP_FILE', __FILE__ );
+define( 'PAPER_WASP_DIR', __DIR__ );
+define( 'PAPER_WASP_URL', plugins_url( '/', __FILE__ ) );
 
 // TODO: Remove this after testing
 define( 'DISALLOW_UNFILTERED_HTML', true );
@@ -34,6 +36,7 @@ if ( 'plugins.php' === $pagenow ) {
 require dirname( __FILE__ ) . '/includes/functions.php';
 require dirname( __FILE__ ) . '/includes/actions.php';
 require dirname( __FILE__ ) . '/includes/filters.php';
+require dirname( __FILE__ ) . '/includes/component-registry.php';
 require dirname( __FILE__ ) . '/includes/PaperWaspUtilities.php';
 require dirname( __FILE__ ) . '/includes/PaperWaspAdmin.php';
 require dirname( __FILE__ ) . '/includes/PaperWasp.php';

@@ -2,6 +2,8 @@
 import type {ReactChildren} from 'react-flow-types';
 import Registry from 'registry';
 import {createFactory} from 'react';
+import Async from 'react-promise';
+import Promise from 'promise-polyfill';
 import filter from 'lodash.filter';
 import find from 'lodash.find';
 
@@ -90,7 +92,7 @@ class ComponentRegistry extends Registry {
      * @returns {Object|null}
      */
     renderComponent(type: string, props: Object, children?: ReactChildren) {
-        return this.has(type) ? createFactory(this.getProperty(type, 'class'))(props, children) : null;
+        return this.loadClass('class', type, props, children);
     }
 
     /**
@@ -102,7 +104,66 @@ class ComponentRegistry extends Registry {
      * @returns {Object|null}
      */
     renderComponentEditor(type: string, props: Object, children?: ReactChildren) {
-        return this.has(type) ? createFactory(this.getProperty(type, 'classEditor'))(props, children) : null;
+        return this.loadClass('classEditor', type, props, children);
+    }
+
+    loadFile(path, onload, onerror) {
+        const doc = window.document;
+        const script = doc.createElement('script');
+        doc.body.appendChild(script);
+        script.onload = onload;
+        script.onerror = onerror;
+        script.src = path;
+    }
+
+    loadClass(name, type, props, children) {
+
+        if(this.has(type)) {
+
+            let componentClass = this.getProperty(type, name);
+
+            if(typeof componentClass === 'string') {
+
+                const promise = new Promise((resolve, reject) => {
+
+                    const onload = () => {
+                        componentClass = this.getProperty(type, name);
+                        if(typeof componentClass === 'string') {
+                            reject();
+                        }
+                        resolve({componentClass, props, children});
+                    };
+
+                    const onerror = () => {
+                        reject();
+                    };
+
+                    this.loadFile(componentClass, onload, onerror);
+
+                });
+
+                return (
+                    <Async
+                        before={() => null}
+                        catch={() => null}
+                        key={props.uid}
+                        pendingRender={null}
+                        promise={promise}
+                        then={({componentClass, props, children}) => {
+                            return createFactory(componentClass)(props, children);
+                        }}
+                        {...props}
+                    />
+                );
+
+            }
+
+            return createFactory(componentClass)(props, children);
+
+        }
+
+        return null;
+
     }
 
 }

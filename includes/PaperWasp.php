@@ -229,6 +229,7 @@ class PaperWasp {
 				return array_keys( $value );
 			}, $allowedposttags ),
 			'components'        => PaperWaspUtilities::getComponents( $post ),
+			'registry' 			=> apply_filters( 'paper_wasp_register_component', [] ),
 			'postId'            => $post->ID,
 			'restBase'          => esc_url_raw( rest_url() ),
 			'restNonce'         => wp_create_nonce( 'wp_rest' ),

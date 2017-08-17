@@ -79,19 +79,18 @@ function paper_wasp_edit_link( WP_Post $post = null ) {
 function paper_wasp_register_component( $type, $label, $args = [] ) {
 
 	$defaults = array(
-		'canAdd'       => true,
-		'canDelete'    => true,
-		'canEdit'      => true,
-		'isComponent'  => true,
-		'isDynamic'    => false,
-		'isSection'    => false,
-		'thumbnailUrl' => null,
+		'canAdd'       	=> true,
+		'canDelete'    	=> true,
+		'canEdit'      	=> true,
+		'group'			=> 'component',
+		'isDynamic'    	=> false,
+		'thumbnailUrl'	=> null,
 	);
 
-	$component = array(
+	$component = array_merge( $defaults, $args, [
 		'type'  => sanitize_title_with_dashes( $type ),
 		'label' => esc_html( $label ),
-	);
+	]);
 
 	foreach ( $defaults as $key => $default ) {
 		$component[ $key ] = array_key_exists( $key, $args ) ? $args[ $key ] : $default;

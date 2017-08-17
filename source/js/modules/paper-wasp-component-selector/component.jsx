@@ -79,7 +79,7 @@ class ComponentSelector extends Component {
                     {componentTypes[index] && componentTypes[index].thumbnailUrl ? (
                         <img
                             alt={componentTypes[index].type}
-                            src={`${paperWaspPath}${componentTypes[index].thumbnailUrl}`} />
+                            src={componentTypes[index].thumbnailUrl} />
                     ) : null}
                 </div>
 

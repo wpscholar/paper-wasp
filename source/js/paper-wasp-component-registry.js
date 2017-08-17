@@ -36,18 +36,6 @@ const components = [
         canAdd: true,
         canDelete: true,
         canEdit: true,
-        class: Image,
-        classEditor: ImageEditor,
-        group: 'component',
-        isDynamic: false,
-        label: 'Image',
-        thumbnailUrl: '/assets/img/image.jpeg',
-        type: 'image',
-    },
-    {
-        canAdd: true,
-        canDelete: true,
-        canEdit: true,
         class: ImageTile,
         classEditor: ImageTileEditor,
         group: 'tile',
@@ -117,3 +105,4 @@ const components = [
 ];
 
 components.forEach(component => componentRegistry.set(component.type, component));
+window.paperWasp.registry.forEach(component => componentRegistry.set(component.type, component));
