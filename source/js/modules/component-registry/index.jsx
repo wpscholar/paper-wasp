@@ -2,7 +2,7 @@
 import type {ReactChildren} from 'react-flow-types';
 import Registry from 'registry';
 import {createFactory} from 'react';
-import Async from 'react-promise';
+import Async from 'async';
 import Promise from 'promise-polyfill';
 import filter from 'lodash.filter';
 import find from 'lodash.find';
@@ -107,6 +107,13 @@ class ComponentRegistry extends Registry {
         return this.loadClass('classEditor', type, props, children);
     }
 
+    /**
+     * Lazy load a JS file
+     *
+     * @param {string} path
+     * @param {Function} onload
+     * @param {Function} onerrer
+     */
     loadFile(path, onload, onerror) {
         const doc = window.document;
         const script = doc.createElement('script');
@@ -116,6 +123,14 @@ class ComponentRegistry extends Registry {
         script.src = path;
     }
 
+    /**
+     * Load a class
+     *
+     * @param {string} name
+     * @param {string} type
+     * @param {Object} props
+     * @param {Object, Array, string, number, void} children
+     */
     loadClass(name, type, props, children) {
 
         if(this.has(type)) {
@@ -149,7 +164,7 @@ class ComponentRegistry extends Registry {
                         key={props.uid}
                         pendingRender={null}
                         promise={promise}
-                        then={({componentClass, props, children}) => {
+                        then={({componentClass, children}, props) => {
                             return createFactory(componentClass)(props, children);
                         }}
                         {...props}
