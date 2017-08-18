@@ -7,5 +7,5 @@ const {
 } = window;
 
 if(componentRegistry) {
-    componentRegistry.setProperty('image', 'class', Image);
+    componentRegistry.setProperty('paper-wasp-image', 'class', Image);
 }

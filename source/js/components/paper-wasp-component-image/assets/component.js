@@ -84,7 +84,7 @@ var _window = window,
 
 
 if (componentRegistry) {
-    componentRegistry.setProperty('image', 'class', __WEBPACK_IMPORTED_MODULE_0__container__["a" /* Image */]);
+    componentRegistry.setProperty('paper-wasp-image', 'class', __WEBPACK_IMPORTED_MODULE_0__container__["a" /* Image */]);
 }
 
 /***/ }),
@@ -155,4 +155,4 @@ function Image(_ref) {
 
 /***/ })
 /******/ ]);
-//# sourceMappingURL=image.js.map
+//# sourceMappingURL=component.js.map

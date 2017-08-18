@@ -88,7 +88,7 @@ var _window = window,
 
 
 if (componentRegistry) {
-    componentRegistry.setProperty('image', 'classEditor', __WEBPACK_IMPORTED_MODULE_0__component_editor__["a" /* ImageEditor */]);
+    componentRegistry.setProperty('paper-wasp-image', 'classEditor', __WEBPACK_IMPORTED_MODULE_0__component_editor__["a" /* ImageEditor */]);
 }
 
 /***/ }),
@@ -555,4 +555,4 @@ module.exports = React;
 
 /***/ })
 /******/ ]);
-//# sourceMappingURL=image-editor.js.map
+//# sourceMappingURL=component-editor.js.map
