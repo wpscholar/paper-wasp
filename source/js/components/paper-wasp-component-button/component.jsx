@@ -55,7 +55,7 @@ function Button(
                 dangerouslySetInnerHTML={{
                     __html: sanitizeHtml(text, {
                         allowedAttributes: {'*': ['class', 'id']},
-                        allowedTags: ['b', 'br', 'em', 'i', 'strong', 'span']
+                        allowedTags: ['b', 'br', 'em', 'i', 'span', 'strong', 'sub', 'sup']
                     })
                 }}
                 href={link}
