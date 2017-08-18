@@ -7,7 +7,6 @@ import {registerRow} from 'paper-wasp-component-row';
 import {Grid, GridEditor} from 'paper-wasp-component-grid';
 import {Image, ImageEditor} from 'paper-wasp-component-image';
 import {ImageTile, ImageTileEditor} from 'paper-wasp-component-image-tile';
-import {Button, ButtonEditor} from 'paper-wasp-component-button';
 
 const {paperWasp: {componentRegistry = ComponentRegistry}} = window;
 
@@ -39,18 +38,6 @@ const components = [
         label: 'Image Tile',
         thumbnailUrl: '/assets/img/image.jpeg',
         type: 'image-tile',
-    },
-    {
-        canAdd: true,
-        canDelete: true,
-        canEdit: true,
-        class: Button,
-        classEditor: ButtonEditor,
-        group: 'component',
-        isDynamic: false,
-        label: 'Button',
-        thumbnailUrl: '/assets/img/button.png',
-        type: 'button',
     }
 ];
 

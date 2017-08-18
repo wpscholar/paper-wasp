@@ -1,7 +1,7 @@
 // @flow
 /* eslint-disable react/no-danger, no-return-assign */
 
-import sanitizeHtml from 'sanitize-html';
+const {sanitizeHtml} = window;
 
 type Props = {
     className: string,

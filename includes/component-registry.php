@@ -1,5 +1,12 @@
 <?php
 
+paper_wasp_register_component( 'paper-wasp-button', 'Button', [
+    'class' => PAPER_WASP_URL . 'source/js/components/paper-wasp-component-button/assets/component.js',
+    'classEditor' => PAPER_WASP_URL . 'source/js/components/paper-wasp-component-button/assets/component-editor.js',
+    'thumbnailUrl' => PAPER_WASP_URL . 'source/js/components/paper-wasp-component-button/assets/button.png',
+] );
+
+
 paper_wasp_register_component( 'paper-wasp-heading', 'Heading', [
     'class' => PAPER_WASP_URL . 'source/js/components/paper-wasp-component-heading/assets/component.js',
     'classEditor' => PAPER_WASP_URL . 'source/js/components/paper-wasp-component-heading/assets/component-editor.js',
