@@ -2,7 +2,7 @@
 import {connect} from 'react-redux';
 import {getPage} from 'paper-wasp/selectors';
 import {getContext} from 'paper-wasp-editor/selectors';
-import {Page, PageEditMode} from 'paper-wasp-component-page';
+import {Page} from 'paper-wasp-component-page';
 
 import {openModal, setModalContent} from './action-creators';
 import {onDrag, onDragEnd} from './functions';
@@ -25,7 +25,7 @@ function PaperWaspEditor(
 ) {
     return (
         <div className="paper-wasp-editor" onDrag={drag} onDragEnd={dragEnd}>
-            {context === 'view' ? <Page {...props} /> : <PageEditMode {...props} />}
+            <Page {...props} />
             <div className="paper-wasp-editor__add">
                 <button
                     className="paper-wasp-button-primary"
