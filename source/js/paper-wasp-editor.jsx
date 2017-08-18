@@ -8,6 +8,7 @@ if (el) {
 
     const {
         paperWasp: {
+            ajaxUrl,
             allowedTags,
             allowedAttributes,
             components,
@@ -23,6 +24,7 @@ if (el) {
     const initialState = {
         components,
         container: {
+            ajaxUrl,
             allowedAttributes,
             allowedTags,
             componentRegistry,
