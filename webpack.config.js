@@ -25,10 +25,10 @@ const config = {
             './source/scss/paper-wasp.scss',
         ],
         'paper-wasp-editor': [
+            'sanitize-html',
             './source/js/polyfills/object-assign.js',
             './source/js/polyfills/array-from.js',
             './source/scss/paper-wasp-editor.scss',
-            'react',
             './source/js/paper-wasp-editor'
         ],
         'paper-wasp-component-registry': [
@@ -119,6 +119,10 @@ const config = {
             {
                 test: require.resolve('react-dom'),
                 use: 'expose-loader?ReactDOM'
+            },
+            {
+                test: require.resolve('sanitize-html'),
+                use: 'expose-loader?sanitizeHtml',
             },
             {
                 test: require.resolve('lodash'),
