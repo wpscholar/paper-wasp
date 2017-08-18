@@ -24,7 +24,5 @@
         "babel-preset-flow": "^6.23.0",
         "babel-preset-react": "^6.24.1"
     },
-    "dependencies": {
-        "prop-types": "^15.5.10"
-    }
+    "dependencies": {}
 }
