@@ -13,7 +13,20 @@ class PaperWaspUtilities {
 	 * @return array
 	 */
 	public static function getComponents( WP_Post $post ) {
-		$components = array_filter( (array) get_post_meta( $post->ID, '_paper_wasp_components', true ) );
+		$componentData = get_post_meta( $post->ID, '_paper_wasp_components', true );
+
+		$components = [];
+		if ( $componentData ) {
+			if ( is_array( $componentData ) ) {
+				$components = $componentData;
+			} else {
+				$decoded = json_decode( $componentData );
+				if ( $decoded && is_array( $decoded ) ) {
+					$components = $decoded;
+				}
+			}
+		}
+
 		$components = apply_filters( 'paper_wasp_get_components', $components, $post );
 		$components = self::sanitizeComponents( $components );
 
@@ -32,7 +45,7 @@ class PaperWaspUtilities {
 		$components = apply_filters( 'paper_wasp_set_components', $components, $post );
 
 		// Sanitization of components is automatic due to register_meta() - callback is sanitizeComponents
-		return (bool) update_post_meta( $post->ID, '_paper_wasp_components', $components );
+		return (bool) update_post_meta( $post->ID, '_paper_wasp_components', wp_json_encode( $components ) );
 	}
 
 	/**
