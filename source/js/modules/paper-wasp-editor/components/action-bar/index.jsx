@@ -17,6 +17,7 @@ const PaperWaspActionBar = connect(
     state => ({
         isSaving: state.actionBar.isSaving,
         isSuccess: state.actionBar.isSuccess,
+        shouldSave: state.actionBar.shouldSave,
         showModal: state.actionBar.showModal
     }),
     dispatch => ({

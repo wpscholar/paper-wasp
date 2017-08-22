@@ -2,6 +2,7 @@
 
 import {PropTypes} from 'prop-types';
 import Modal from 'modal';
+import BeforeUnload from 'before-unload';
 import Spinner from '../spinner';
 import Checkmark from '../checkmark';
 
@@ -9,6 +10,7 @@ type Props = {
     isSaving: bool,
     isSuccess: bool,
     onSave: Function,
+    shouldSave: bool,
     showModal: bool
 };
 
@@ -20,14 +22,17 @@ ActionBar.contextTypes = {
     store: PropTypes.object
 };
 
-function ActionBar({isSaving, isSuccess, onSave, showModal}: Props, {store}: Context) {
+function ActionBar({isSaving, isSuccess, onSave, shouldSave, showModal}: Props, {store}: Context) {
+
     return (
         <div className="paper-wasp-action-bar">
 
             <a
                 className="paper-wasp-button-secondary"
                 href={`${window.location.origin}${window.location.pathname}`}
-                rel="noopener noreferrer" target="_blank">View</a>
+                rel="noopener noreferrer" target="_blank">
+                View
+            </a>
 
             <button className="paper-wasp-button-primary" onClick={() => onSave(store)} type="button">Save</button>
 
@@ -42,6 +47,8 @@ function ActionBar({isSaving, isSuccess, onSave, showModal}: Props, {store}: Con
                     </p>
                 ) : (null)}
             </Modal>
+
+            {shouldSave ? <BeforeUnload onBeforeUnload={e => 'Please save your changes.'} /> : null}
 
         </div>
     );
