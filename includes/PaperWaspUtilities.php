@@ -44,8 +44,19 @@ class PaperWaspUtilities {
 	public static function setComponents( WP_Post $post, array $components ) {
 		$components = apply_filters( 'paper_wasp_set_components', $components, $post );
 
-		// Sanitization of components is automatic due to register_meta() - callback is sanitizeComponents
-		return (bool) update_post_meta( $post->ID, '_paper_wasp_components', wp_json_encode( $components ) );
+		// Sanitization of components is automatic due to register_meta() - callback is onSave
+		return (bool) update_post_meta( $post->ID, '_paper_wasp_components', $components );
+	}
+
+	/**
+	 * Function used to sanitize and encode component data into JSON on save.
+	 *
+	 * @param array $components
+	 *
+	 * @return string
+	 */
+	public static function onSave( array $components ) {
+		return (string) wp_json_encode( self::sanitizeComponents( $components ) );
 	}
 
 	/**

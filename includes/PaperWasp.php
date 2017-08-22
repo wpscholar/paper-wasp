@@ -29,7 +29,7 @@ class PaperWasp {
 			'type'              => 'array',
 			'description'       => 'A collection of Paper Wasp components.',
 			'single'            => false,
-			'sanitize_callback' => array( 'PaperWaspUtilities', 'sanitizeComponents' ),
+			'sanitize_callback' => array( 'PaperWaspUtilities', 'onSave' ),
 			'auth_callback'     => '__return_true',
 		) );
 
