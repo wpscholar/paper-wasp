@@ -8,6 +8,7 @@ type Props = {
     fit: string,
     id: string,
     link: string,
+    newTab: boolean,
     showCaption: boolean,
     src: string,
     title: string,
@@ -22,6 +23,7 @@ function Image(
         fit = 'natural',
         id,
         link,
+        newTab = false,
         showCaption,
         src,
         title,
@@ -40,9 +42,18 @@ function Image(
 
     const hasCaption = caption && caption.length > 0;
 
+    let newTabProps = {};
+
+    if( newTab ) {
+        newTabProps = {
+            rel: 'noopener noreferrer',
+            target: '_blank'
+        }
+    }
+
     return (
         <figure className={classes} id={id}>
-            {link ? <a href={link} rel="noopener noreferrer" target="_blank">{img}</a> : img}
+            {link ? <a href={link} {...newTabProps}>{img}</a> : img}
             {hasCaption && showCaption ? <figcaption>{caption}</figcaption> : null}
         </figure>
     );

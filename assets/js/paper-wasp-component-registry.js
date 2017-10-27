@@ -45454,7 +45454,7 @@ var Grid = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_react_redux__["a" /
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 function Image(_ref) {
     var _ref$align = _ref.align,
@@ -45468,6 +45468,8 @@ function Image(_ref) {
         fit = _ref$fit === undefined ? 'natural' : _ref$fit,
         id = _ref.id,
         link = _ref.link,
+        _ref$newTab = _ref.newTab,
+        newTab = _ref$newTab === undefined ? false : _ref$newTab,
         showCaption = _ref.showCaption,
         src = _ref.src,
         title = _ref.title;
@@ -45480,12 +45482,21 @@ function Image(_ref) {
 
     var hasCaption = caption && caption.length > 0;
 
+    var newTabProps = {};
+
+    if (newTab) {
+        newTabProps = {
+            rel: 'noopener noreferrer',
+            target: '_blank'
+        };
+    }
+
     return React.createElement(
         'figure',
         { className: classes, id: id },
         link ? React.createElement(
             'a',
-            { href: link, rel: 'noopener noreferrer', target: '_blank' },
+            _extends({ href: link }, newTabProps),
             img
         ) : img,
         hasCaption && showCaption ? React.createElement(
