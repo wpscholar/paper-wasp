@@ -4,7 +4,7 @@
  * Plugin Name: Paper Wasp
  * Plugin URI:
  * Description:
- * Version: 0.1.0
+ * Version: 1.0
  * Author: Narwhal Digital
  * Author URI:  https://www.narwhal.digital/
  * License:     GPL2

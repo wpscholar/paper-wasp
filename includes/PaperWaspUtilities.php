@@ -51,11 +51,15 @@ class PaperWaspUtilities {
 	/**
 	 * Function used to sanitize and encode component data into JSON on save.
 	 *
-	 * @param array $components
+	 * @param string|array $components
 	 *
 	 * @return string
 	 */
-	public static function onSave( array $components ) {
+	public static function onSave( $components ) {
+		if ( is_string( $components ) ) {
+			$components = json_decode( $components, true );
+		}
+
 		return (string) wp_json_encode( self::sanitizeComponents( $components ) );
 	}
 
