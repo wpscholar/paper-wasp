@@ -5,13 +5,13 @@
  * Plugin URI:
  * Description:
  * Version: 0.1.0
- * Author: Narwhal Digital
- * Author URI:  https://www.narwhal.digital/
+ * Author: Micah Wood
+ * Author URI:  https://wpscholar.com
  * License:     GPL2
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: paper-wasp
  *
- * Copyright 2017 by Narwhal Digital - All rights reserved.
+ * Copyright 2017-2018 by Micah Wood - All rights reserved.
  */
 
 define( 'PAPER_WASP_VERSION', '0.1.0' );
