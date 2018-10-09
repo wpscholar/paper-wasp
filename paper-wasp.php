@@ -14,7 +14,7 @@
  * Copyright 2017-2018 by Micah Wood - All rights reserved.
  */
 
-define( 'PAPER_WASP_VERSION', '0.1.0' );
+define( 'PAPER_WASP_VERSION', '1.0' );
 define( 'PAPER_WASP_FILE', __FILE__ );
 
 // TODO: Remove this after testing
