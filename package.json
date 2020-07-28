@@ -121,7 +121,7 @@
     "redux-logger": "^3.0.6",
     "redux-promise": "^0.5.3",
     "reselect": "^3.0.1",
-    "sanitize-html": "^1.14.1",
+    "sanitize-html": "^1.27.0",
     "sass-loader": "^6.0.5",
     "style-loader": "^0.16.1",
     "uuid": "^3.0.1",
