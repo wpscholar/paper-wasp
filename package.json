@@ -78,7 +78,7 @@
     "babel-preset-flow": "^6.23.0",
     "babel-preset-react": "^6.24.1",
     "classnames": "^2.2.5",
-    "css-loader": "^0.28.4",
+    "css-loader": "^1.0.0",
     "css-mqpacker": "^5.0.1",
     "empty": "^0.10.1",
     "enzyme": "^2.8.2",
